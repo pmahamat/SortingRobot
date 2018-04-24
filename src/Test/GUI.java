@@ -7,16 +7,16 @@ import java.awt.event.ActionListener;
 
 public class GUI extends JFrame implements ActionListener {
 
-    JTextField message;
-    JButton sendMessage;
+    private JTextField message;
+    private JButton sendMessage;
 
-    SerialConnector serialConnector = new SerialConnector();
+    private SerialConnector serialConnector = new SerialConnector();
 
-    public GUI(){
+    public GUI() {
         this.setTitle("HMI");
 
         this.setLayout(new FlowLayout());
-        this.setSize(300,100);
+        this.setSize(300, 100);
         message = new JTextField();
         message.setText("Voer hier in.");
         message.setSize(250, 75);
@@ -28,15 +28,13 @@ public class GUI extends JFrame implements ActionListener {
         this.add(message);
         this.add(sendMessage);
         this.show();
-
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == sendMessage) {
+        if (e.getSource() == sendMessage) {
             for (int i = 0; i < 100; i++) {
-                if(i % 2 == 0) {
+                if (i % 2 == 0) {
 
                     serialConnector.SendMessage("owo");
                 } else {
@@ -50,7 +48,7 @@ public class GUI extends JFrame implements ActionListener {
                 }
             }
         }
-        if(e.getSource() == message) {
+        if (e.getSource() == message) {
             serialConnector.SendMessage(message.getText());
         }
     }

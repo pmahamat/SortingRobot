@@ -1,8 +1,11 @@
 import Test.GUI;
 
+import javax.swing.*;
+
 public class Main {
 
     public static void main(String[] args) {
-        GUI ui = new GUI();
+        GUI gui = new GUI();
+        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
