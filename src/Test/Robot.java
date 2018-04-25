@@ -5,7 +5,7 @@ public class Robot {
     private Boolean isOn = false;
 
     public Robot(String naam){
-
+        this.naam = naam;
     }
 
     public void turnOn(){
@@ -14,5 +14,13 @@ public class Robot {
 
     public void turnOff(){
         isOn = false;
+    }
+
+    public Boolean getOn() {
+        return isOn;
+    }
+
+    public String getNaam() {
+        return naam;
     }
 }
