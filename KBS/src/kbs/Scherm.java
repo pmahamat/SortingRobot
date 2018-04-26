@@ -12,28 +12,15 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.util.Random;
 
-/**
- *
- * @author Bram
- */
+
 public class Scherm extends JFrame implements ActionListener{
-    
-    private JButton jbConfirm;
-    private JButton jbRandom;
-    private JLabel jlK1;
-    private JLabel jlK2;
-    private JLabel jlK3;
-    private JLabel jlK4;
-    private JLabel jlK5;
-    private JLabel jlKA;
-    private JSpinner jsK1;
-    private JSpinner jsK2;
-    private JSpinner jsK3;
-    private JSpinner jsK4;
-    private JSpinner jsK5;
-    private JSpinner jsKA;
+
+    private JButton jbConfirm, jbRandom;
+    private JLabel jlK1, jlK2, jlK3, jlK4, jlK5, jlKA;
+    private JSpinner jsK1, jsK2, jsK3, jsK4, jsK5, jsKA;
     private Samenstelling samenstelling;
     Random rand = new Random();
+
     SpinnerModel sm1 = new SpinnerNumberModel(0, 0, 9, 1);
     SpinnerModel sm2 = new SpinnerNumberModel(0, 0, 9, 1);
     SpinnerModel sm3 = new SpinnerNumberModel(0, 0, 9, 1);
@@ -45,8 +32,8 @@ public class Scherm extends JFrame implements ActionListener{
         this.samenstelling = samenstelling;
         
         setTitle("Samenstelling");
-	setSize(550, 150);
-	setLayout(new FlowLayout());
+	    setSize(550, 450);
+	    setLayout(new FlowLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         jlK1 = new JLabel("Kleur 1");
