@@ -4,8 +4,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
@@ -201,6 +204,14 @@
                               </Label>
                               <Button fx:id="startStop2" layoutX="179.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startRobot2" text="Start/Stop" AnchorPane.rightAnchor="44.99999999999997" />
                               <Circle fx:id="statusRobot2" fill="#ff1f20" layoutX="269.0" layoutY="37.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="7.0" />
+                              <MenuButton fx:id="samenstellingen" layoutX="167.0" layoutY="56.0" mnemonicParsing="false" onAction="#getSamenstellingen" text="Samenstellingen" AnchorPane.rightAnchor="8.199999999999974">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                                  <MenuItem mnemonicParsing="false" text="Action 2" />
+                                </items>
+                              </MenuButton>
+                              <Button fx:id="opslaanButton" layoutX="167.0" layoutY="168.0" mnemonicParsing="false" onAction="#slaOp" text="Opslaan" AnchorPane.rightAnchor="68.19999999999997" />
+                              <TextField layoutX="228.0" layoutY="168.0" prefHeight="26.0" prefWidth="62.0" AnchorPane.rightAnchor="3.9999999999999787" />
                            </children>
                         </AnchorPane>
                     </items>

@@ -7,18 +7,15 @@ import javafx.stage.Stage;
 //import Test.SchermHMI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 import static javafx.application.Application.launch;
 
 public class Main extends Application {
-
+    private MainController controller;
 
     public static void main(String[] args) {
-//        SorteerRobot sorteerRobot = new SorteerRobot("sorteerRobot");
-//        SamenstelRobot samenstelRobot = new SamenstelRobot("samenstelrobot");
-//        Systeem systeem = new Systeem(sorteerRobot, samenstelRobot);
-//        MainController mainController = new MainController(systeem);
         launch(args);
     }
 
@@ -27,13 +24,11 @@ public class Main extends Application {
         SorteerRobot sorteerRobot = new SorteerRobot("sorteerRobot");
         SamenstelRobot samenstelRobot = new SamenstelRobot("samenstelrobot");
         Systeem systeem = new Systeem(sorteerRobot, samenstelRobot);
-//        MainController controller = new MainController(systeem);
-//
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Test/HMI.fxml"));
-//        loader.setController(controller);
-//
         Parent root = loader.load();
         MainController controller = loader.getController();
+        this.controller = loader.getController();
         controller.setSysteem(systeem);
 
         primaryStage.setTitle("HMI");

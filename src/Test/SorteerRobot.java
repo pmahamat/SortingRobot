@@ -45,16 +45,40 @@ public class SorteerRobot extends Robot {
         this.standArm = standArm;
     }
 
-    public static void setKleur2(Color kleur2) {
-        SorteerRobot.kleur2 = kleur2;
+    public void setKleur1(javafx.scene.paint.Color kleur1) {
+        javafx.scene.paint.Color fx = kleur1;
+        java.awt.Color awtColor = new java.awt.Color((float) fx.getRed(),
+                (float) fx.getGreen(),
+                (float) fx.getBlue(),
+                (float) fx.getOpacity());
+        SorteerRobot.kleur1 = awtColor;
     }
 
-    public static void setKleur3(Color kleur3) {
-        SorteerRobot.kleur3 = kleur3;
+    public void setKleur2(javafx.scene.paint.Color kleur2) {
+        javafx.scene.paint.Color fx = kleur2;
+        java.awt.Color awtColor = new java.awt.Color((float) fx.getRed(),
+                (float) fx.getGreen(),
+                (float) fx.getBlue(),
+                (float) fx.getOpacity());
+        SorteerRobot.kleur2 = awtColor;
     }
 
-    public static void setKleur4(Color kleur4) {
-        SorteerRobot.kleur4 = kleur4;
+    public void setKleur3(javafx.scene.paint.Color kleur3) {
+        javafx.scene.paint.Color fx = kleur3;
+        java.awt.Color awtColor = new java.awt.Color((float) fx.getRed(),
+                (float) fx.getGreen(),
+                (float) fx.getBlue(),
+                (float) fx.getOpacity());
+        SorteerRobot.kleur3 = awtColor;
+    }
+
+    public void setKleur4(javafx.scene.paint.Color kleur4) {
+        javafx.scene.paint.Color fx = kleur4;
+        java.awt.Color awtColor = new java.awt.Color((float) fx.getRed(),
+                (float) fx.getGreen(),
+                (float) fx.getBlue(),
+                (float) fx.getOpacity());
+        SorteerRobot.kleur4 = awtColor;
     }
 
     public static void setLastScannedColor(Color lastScannedColor) {
