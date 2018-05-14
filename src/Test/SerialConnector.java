@@ -9,29 +9,34 @@ public class SerialConnector {
     private static SerialPort arduino;
 
     SerialConnector() {
-        arduino = serialPorts[0];
+        try {
 
-        arduino.openPort();
-        arduino.setBaudRate(9600);
+            arduino = serialPorts[0];
 
-        arduino.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 100, 0);
+            arduino.openPort();
+            arduino.setBaudRate(9600);
 
-        arduino.addDataListener(new SerialPortDataListener() {
-            @Override
-            public int getListeningEvents() {
-                return SerialPort.LISTENING_EVENT_DATA_AVAILABLE;
-            }
+            arduino.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 100, 0);
 
-            @Override
-            public void serialEvent(SerialPortEvent event) {
-                if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE)
-                    return;
-                byte[] newData = new byte[arduino.bytesAvailable()];
-                int numRead = arduino.readBytes(newData, newData.length);
-                for (byte aNewData : newData) System.out.print((char) aNewData);
-//                System.out.println("Read " + numRead + " bytes.");
-            }
-        });
+            arduino.addDataListener(new SerialPortDataListener() {
+                @Override
+                public int getListeningEvents() {
+                    return SerialPort.LISTENING_EVENT_DATA_AVAILABLE;
+                }
+
+                @Override
+                public void serialEvent(SerialPortEvent event) {
+                    if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE)
+                        return;
+                    byte[] newData = new byte[arduino.bytesAvailable()];
+                    arduino.readBytes(newData, newData.length);
+                    for (byte aNewData : newData) System.out.print((char) aNewData);
+                }
+            });
+
+        } catch (Exception error) {
+            System.out.println("Arduino not connected");
+        }
 
     }
 

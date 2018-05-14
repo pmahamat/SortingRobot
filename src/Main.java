@@ -1,16 +1,14 @@
-import Test.*;
+import Test.MainController;
+import Test.SamenstelRobot;
+import Test.SorteerRobot;
+import Test.Systeem;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 //import Test.SchermHMI;
-
-import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
-
-import static javafx.application.Application.launch;
 
 public class Main extends Application {
     private MainController controller;
