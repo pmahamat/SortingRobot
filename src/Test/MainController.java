@@ -1,10 +1,7 @@
 package Test;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
+import javafx.scene.control.*;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -107,6 +104,9 @@ public class MainController {
 
     @FXML
     private Circle statusRobot2;
+
+    @FXML
+    private MenuButton samenstellingen;
 
     @FXML
     void setAantal1(javafx.scene.input.InputMethodEvent event) {
