@@ -8,8 +8,8 @@ public class Robot {
         this.naam = naam;
     }
 
-    public void turnOn(){
-        isOn = true;
+    public void switchPower(){
+        isOn = !isOn;
     }
 
     public void turnOff(){
