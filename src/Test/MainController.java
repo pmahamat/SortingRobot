@@ -5,17 +5,25 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import sun.applet.Main;
 
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 
 public class MainController {
 
+//    public MainController(Systeem systeem){
+//        this.systeem =systeem;
+//    }
 
+    public void setSysteem(Systeem systeem) {
+        this.systeem = systeem;
+    }
+
+    private Systeem systeem;
 
     @FXML
     private Rectangle lastScannedColor;
@@ -104,11 +112,71 @@ public class MainController {
     @FXML
     private Circle statusRobot2;
 
-    public void startRobot2(javafx.event.ActionEvent actionEvent) {
-        statusRobot2.setFill(Color.GREEN);
+    @FXML
+    void setAantal1(javafx.scene.input.InputMethodEvent event) {
+
     }
 
-    public void startRobot1(javafx.event.ActionEvent actionEvent) {
-        statusRobot1.setFill(Color.GREEN);
+    @FXML
+    void setAantal2(InputMethodEvent event) {
+        System.out.println("hoi");
+    }
+
+    @FXML
+    void setAantal3(InputMethodEvent event) {
+
+    }
+    @FXML
+    void setAantal4(InputMethodEvent event){
+
+    }
+
+    @FXML
+    void setAantalBatches(InputMethodEvent event) {
+
+    }
+
+    @FXML
+    void setColor1(ActionEvent event) {
+        System.out.println("hoi");
+    }
+
+    @FXML
+    void setColor2(ActionEvent event) {
+
+    }
+
+    @FXML
+    void setColor3(ActionEvent event) {
+
+    }
+
+    @FXML
+    void setColor4(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void startRobot2(javafx.event.ActionEvent actionEvent) {
+        systeem.getSamenstelRobot().switchPower();
+        if(systeem.getSamenstelRobot().getOn())
+        {
+            statusRobot2.setFill(Color.GREEN);
+        }else
+        {
+            statusRobot2.setFill(Color.RED);
+        }
+    }
+
+    @FXML
+    public  void  startRobot1(){
+        systeem.getSorteerRobot().switchPower();
+        if(systeem.getSorteerRobot().getOn())
+        {
+            statusRobot1.setFill(Color.GREEN);
+        }else
+        {
+            statusRobot1.setFill(Color.RED);
+        }
     }
 }
