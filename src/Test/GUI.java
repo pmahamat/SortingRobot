@@ -33,20 +33,8 @@ public class GUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == sendMessage) {
-            for (int i = 0; i < 100; i++) {
-                if (i % 2 == 0) {
 
-                    serialConnector.SendMessage("owo");
-                } else {
-
-                    serialConnector.SendMessage("OwO");
-                }
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
-            }
+            serialConnector.SendMessage(message.getText());
         }
         if (e.getSource() == message) {
             serialConnector.SendMessage(message.getText());

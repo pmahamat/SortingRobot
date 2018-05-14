@@ -27,9 +27,8 @@ public class SerialConnector {
                 if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE)
                     return;
                 byte[] newData = new byte[arduino.bytesAvailable()];
-                int numRead = arduino.readBytes(newData, newData.length);
+                arduino.readBytes(newData, newData.length);
                 for (byte aNewData : newData) System.out.print((char) aNewData);
-//                System.out.println("Read " + numRead + " bytes.");
             }
         });
 

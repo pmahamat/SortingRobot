@@ -19,6 +19,8 @@ public class MainController {
         this.systeem = systeem;
     }
 
+    private SerialConnector serialConnector = new SerialConnector();
+
     private Systeem systeem;
 
     @FXML
@@ -135,21 +137,49 @@ public class MainController {
     @FXML
     void setColor1(ActionEvent event) {
         systeem.getSorteerRobot().setKleur1(kleur1.getValue());
+
+        serialConnector.SendMessage("{\n" +
+                "  \"type\": \"kleur1\",\n" +
+                "  \"red\":\"" + systeem.getSorteerRobot().getKleur1().getRed() + "\",\n" +
+                "  \"green\" : \"" + systeem.getSorteerRobot().getKleur1().getGreen() + "\",\n" +
+                "  \"blue\": \"" + systeem.getSorteerRobot().getKleur1().getBlue() + "\"\n" +
+                "}");
     }
 
     @FXML
     void setColor2(ActionEvent event) {
         systeem.getSorteerRobot().setKleur2(kleur2.getValue());
+
+        serialConnector.SendMessage("{\n" +
+                "  \"type\": \"kleur2\",\n" +
+                "  \"red\":\"" + systeem.getSorteerRobot().getKleur2().getRed() + "\",\n" +
+                "  \"green\" : \"" + systeem.getSorteerRobot().getKleur2().getGreen() + "\",\n" +
+                "  \"blue\": \"" + systeem.getSorteerRobot().getKleur2().getBlue() + "\"\n" +
+                "}");
     }
 
     @FXML
     void setColor3(ActionEvent event) {
         systeem.getSorteerRobot().setKleur3(kleur3.getValue());
+
+        serialConnector.SendMessage("{\n" +
+                "  \"type\": \"kleur3\",\n" +
+                "  \"red\":\"" + systeem.getSorteerRobot().getKleur3().getRed() + "\",\n" +
+                "  \"green\" : \"" + systeem.getSorteerRobot().getKleur3().getGreen() + "\",\n" +
+                "  \"blue\": \"" + systeem.getSorteerRobot().getKleur3().getBlue() + "\"\n" +
+                "}");
     }
 
     @FXML
     void setColor4(ActionEvent event) {
         systeem.getSorteerRobot().setKleur4(kleur4.getValue());
+
+        serialConnector.SendMessage("{\n" +
+                "  \"type\": \"kleur4\",\n" +
+                "  \"red\":\"" + systeem.getSorteerRobot().getKleur4().getRed() + "\",\n" +
+                "  \"green\" : \"" + systeem.getSorteerRobot().getKleur4().getGreen() + "\",\n" +
+                "  \"blue\": \"" + systeem.getSorteerRobot().getKleur4().getBlue() + "\"\n" +
+                "}");
     }
 
     @FXML
