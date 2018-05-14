@@ -12,10 +12,6 @@ public class Robot {
         isOn = !isOn;
     }
 
-    public void turnOff(){
-        isOn = false;
-    }
-
     public Boolean getOn() {
         return isOn;
     }
