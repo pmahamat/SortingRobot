@@ -108,7 +108,7 @@ public class MainController {
     private Circle statusRobot2;
 
     @FXML
-    private MenuButton samenstellingen;
+    private ChoiceBox samenstellingen;
 
     @FXML
     void setAantal1(javafx.scene.input.InputMethodEvent event) {

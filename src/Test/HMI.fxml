@@ -2,10 +2,9 @@
 
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
@@ -207,15 +206,10 @@
                               </Label>
                               <Button fx:id="startStop2" layoutX="179.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startRobot2" text="Start/Stop" AnchorPane.rightAnchor="44.99999999999997" />
                               <Circle fx:id="statusRobot2" fill="#ff1f20" layoutX="269.0" layoutY="37.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="7.0" />
-                              <MenuButton fx:id="samenstellingen" layoutX="167.0" layoutY="56.0" mnemonicParsing="false" onAction="#getSamenstellingen" text="Samenstellingen" AnchorPane.rightAnchor="8.199999999999974">
-                                <items>
-                                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                                  <MenuItem mnemonicParsing="false" text="Action 2" />
-                                </items>
-                              </MenuButton>
                               <Button fx:id="opslaanButton" layoutX="165.0" layoutY="135.0" mnemonicParsing="false" onAction="#slaOp" text="Opslaan" AnchorPane.rightAnchor="70.19999999999999" />
                               <TextField fx:id="opslaanText" layoutX="226.0" layoutY="135.0" prefHeight="26.0" prefWidth="62.0" AnchorPane.rightAnchor="6.0" />
                               <Button fx:id="verzenden2" layoutX="221.0" layoutY="168.0" mnemonicParsing="false" onAction="#verzend2" text="Verzenden" />
+                              <ChoiceBox fx:id="samenstellingen" layoutX="139.0" layoutY="56.0" prefWidth="150.0" />
                            </children>
                         </AnchorPane>
                     </items>
