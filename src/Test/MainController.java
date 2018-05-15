@@ -213,8 +213,8 @@ public class MainController {
     }
 
     @FXML
-    public void openLog1() {
-
+    public void openLog1(){
+        LogScreen logScreen1 = new LogScreen();
     }
 
     @FXML
