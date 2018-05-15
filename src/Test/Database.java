@@ -149,4 +149,28 @@ public class Database {
             ex.printStackTrace();
         }
     }
+    public void SelectSamenstelling(){
+        try (
+                // Step 1: Allocate a database 'Connection' object
+                Connection conn = DriverManager.getConnection(
+                        "jdbc:mysql://den1.mysql2.gear.host:3306/kbs?useSSL=false", "kbs", "Zn7OG-6fJ!4M");
+                // MySQL: "jdbc:mysql://hostname:port/databaseName", "username", "password"
+        ) {
+            int logID = 0;
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery("Select * from samenstelling");
+            while (rs.next()) {
+                String naam = rs.getString("naam");
+                int bak1 = rs.getInt("Bak1");
+                int bak2 = rs.getInt("Bak2");
+                int bak3 = rs.getInt("Bak3");
+                int bak4 = rs.getInt("Bak4");
+
+                // print the results
+                System.out.format("%s, %s, %s, %s, %s\n", naam, bak1, bak2, bak3, bak4);
+            }
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
