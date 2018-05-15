@@ -216,6 +216,9 @@ public class MainController {
 
     }
 
+    @FXML
+    private
+
     public void setLastScannedColor(Rectangle lastScannedColor) {
         this.lastScannedColor = lastScannedColor;
     }
