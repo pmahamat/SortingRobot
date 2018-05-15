@@ -217,7 +217,23 @@ public class MainController {
     }
 
     @FXML
-    private
+    public void openLog1(){
+
+    }
+    @FXML
+    public void openLog2(){
+
+    }
+
+    @FXML
+    public void verzend1() {
+
+    }
+
+    @FXML
+    public void verzend2(){
+
+    }
 
     public void setLastScannedColor(Rectangle lastScannedColor) {
         this.lastScannedColor = lastScannedColor;
