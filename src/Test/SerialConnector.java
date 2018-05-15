@@ -41,7 +41,11 @@ public class SerialConnector {
     }
 
     public void SendMessage(String s) {
-        byte[] buffer = s.getBytes();
-        arduino.writeBytes(buffer, buffer.length);
+        try {
+            byte[] buffer = s.getBytes();
+            arduino.writeBytes(buffer, buffer.length);
+        } catch (Exception e) {
+            System.out.println("Arduino not connected make sure to connect it first.");
+        }
     }
 }
