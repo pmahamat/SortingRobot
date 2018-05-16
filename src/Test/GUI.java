@@ -10,7 +10,7 @@ public class GUI extends JFrame implements ActionListener {
     private JTextField message;
     private JButton sendMessage;
 
-    private SerialConnector serialConnector = new SerialConnector();
+    private SerialConnector serialConnector = new SerialConnector(2);
 
     public GUI() {
         this.setTitle("HMI");
