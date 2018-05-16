@@ -6,15 +6,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LogScreen extends JDialog {
-    private JTextField jtfWachtwoord;
+    private JTextArea logTekst;
 
     public LogScreen(){
-        setSize(220, 100);
+        setSize(480, 700);
         setTitle("Log");
-        setLayout(new GridLayout(3, 2));
+        setLayout(new FlowLayout());
 
-        jtfWachtwoord = new JTextField(10);
-        add(jtfWachtwoord);
+        logTekst = new JTextArea(40,40);
+        logTekst.setEditable(false);
+        logTekst.setText("testetstettasdasdasdasdasdasdasdasd\nasdasdasdasdasd");
+        add(logTekst);
         setVisible(true);
     }
 }

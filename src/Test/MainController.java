@@ -1,6 +1,5 @@
 package Test;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.InputMethodEvent;
@@ -8,6 +7,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+
+import javafx.event.ActionEvent;
+
+import javax.xml.crypto.Data;
 
 public class MainController {
 
@@ -123,9 +126,8 @@ public class MainController {
     void setAantal3(InputMethodEvent event) {
 
     }
-
     @FXML
-    void setAantal4(InputMethodEvent event) {
+    void setAantal4(InputMethodEvent event){
 
     }
 
@@ -139,10 +141,10 @@ public class MainController {
         systeem.getSorteerRobot().setKleur1(kleur1.getValue());
 
         serialConnector.SendMessage("{\n" +
-                "\"type\": \"kleur1\",\n" +
-                "\"red\":\"" + SorteerRobot.getKleur1().getRed() + "\",\n" +
-                "\"green\" : \"" + SorteerRobot.getKleur1().getGreen() + "\",\n" +
-                "\"blue\": \"" + SorteerRobot.getKleur1().getBlue() + "\"\n" +
+                "  \"type\": \"kleur1\",\n" +
+                "  \"red\":\"" + systeem.getSorteerRobot().getKleur1().getRed() + "\",\n" +
+                "  \"green\" : \"" + systeem.getSorteerRobot().getKleur1().getGreen() + "\",\n" +
+                "  \"blue\": \"" + systeem.getSorteerRobot().getKleur1().getBlue() + "\"\n" +
                 "}");
     }
 
@@ -151,10 +153,10 @@ public class MainController {
         systeem.getSorteerRobot().setKleur2(kleur2.getValue());
 
         serialConnector.SendMessage("{\n" +
-                "\"type\": \"kleur2\",\n" +
-                "\"red\":\"" + SorteerRobot.getKleur2().getRed() + "\",\n" +
-                "\"green\" : \"" + SorteerRobot.getKleur2().getGreen() + "\",\n" +
-                "\"blue\": \"" + SorteerRobot.getKleur2().getBlue() + "\"\n" +
+                "  \"type\": \"kleur2\",\n" +
+                "  \"red\":\"" + systeem.getSorteerRobot().getKleur2().getRed() + "\",\n" +
+                "  \"green\" : \"" + systeem.getSorteerRobot().getKleur2().getGreen() + "\",\n" +
+                "  \"blue\": \"" + systeem.getSorteerRobot().getKleur2().getBlue() + "\"\n" +
                 "}");
     }
 
@@ -163,10 +165,10 @@ public class MainController {
         systeem.getSorteerRobot().setKleur3(kleur3.getValue());
 
         serialConnector.SendMessage("{\n" +
-                "\"type\": \"kleur3\",\n" +
-                "\"red\":\"" + SorteerRobot.getKleur3().getRed() + "\",\n" +
-                "\"green\" : \"" + SorteerRobot.getKleur3().getGreen() + "\",\n" +
-                "\"blue\": \"" + SorteerRobot.getKleur3().getBlue() + "\"\n" +
+                "  \"type\": \"kleur3\",\n" +
+                "  \"red\":\"" + systeem.getSorteerRobot().getKleur3().getRed() + "\",\n" +
+                "  \"green\" : \"" + systeem.getSorteerRobot().getKleur3().getGreen() + "\",\n" +
+                "  \"blue\": \"" + systeem.getSorteerRobot().getKleur3().getBlue() + "\"\n" +
                 "}");
     }
 
@@ -175,29 +177,33 @@ public class MainController {
         systeem.getSorteerRobot().setKleur4(kleur4.getValue());
 
         serialConnector.SendMessage("{\n" +
-                "\"type\": \"kleur4\",\n" +
-                "\"red\":\"" + SorteerRobot.getKleur4().getRed() + "\",\n" +
-                "\"green\" : \"" + SorteerRobot.getKleur4().getGreen() + "\",\n" +
-                "\"blue\": \"" + SorteerRobot.getKleur4().getBlue() + "\"\n" +
+                "  \"type\": \"kleur4\",\n" +
+                "  \"red\":\"" + systeem.getSorteerRobot().getKleur4().getRed() + "\",\n" +
+                "  \"green\" : \"" + systeem.getSorteerRobot().getKleur4().getGreen() + "\",\n" +
+                "  \"blue\": \"" + systeem.getSorteerRobot().getKleur4().getBlue() + "\"\n" +
                 "}");
     }
 
     @FXML
     public void startRobot2(javafx.event.ActionEvent actionEvent) {
         systeem.getSamenstelRobot().switchPower();
-        if (systeem.getSamenstelRobot().getOn()) {
+        if(systeem.getSamenstelRobot().getOn())
+        {
             statusRobot2.setFill(Color.GREEN);
-        } else {
+        }else
+        {
             statusRobot2.setFill(Color.RED);
         }
     }
 
     @FXML
-    public void startRobot1() {
+    public  void  startRobot1(){
         systeem.getSorteerRobot().switchPower();
-        if (systeem.getSorteerRobot().getOn()) {
+        if(systeem.getSorteerRobot().getOn())
+        {
             statusRobot1.setFill(Color.GREEN);
-        } else {
+        }else
+        {
             statusRobot1.setFill(Color.RED);
         }
     }
@@ -208,17 +214,18 @@ public class MainController {
     }
 
     @FXML
-    public void getSamenstellingen() {
+    public void getSamenstellingen(){
 
     }
 
     @FXML
     public void openLog1(){
         LogScreen logScreen1 = new LogScreen();
+        Database db = new Database();
+        db.selectLog();
     }
-
     @FXML
-    public void openLog2() {
+    public void openLog2(){
 
     }
 
@@ -228,14 +235,8 @@ public class MainController {
     }
 
     @FXML
-    public void verzend2() {
-        serialConnector.SendMessage(
-                "{\"type\":\"samenstelling\"," +
-                        "\"kleur1\":\"" + aantalKleur1.getValue() + "\"," +
-                        "\"kleur2\":\"" + aantalKleur2.getValue() + "\"," +
-                        "\"kleur3\":\"" + aantalKleur3.getValue() + "\"," +
-                        "\"kleur4\":\"" + aantalKleur4.getValue() + "\"," +
-                        "\"batches\":\"" + aantalBatches.getValue() + "\"}");
+    public void verzend2(){
+
     }
 
     public void setLastScannedColor(Rectangle lastScannedColor) {

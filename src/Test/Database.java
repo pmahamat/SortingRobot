@@ -173,4 +173,29 @@ public class Database {
             ex.printStackTrace();
         }
     }
+
+    public void selectLog() {
+        try (
+                // Step 1: Allocate a database 'Connection' object
+                Connection conn = DriverManager.getConnection(
+                        "jdbc:mysql://den1.mysql2.gear.host:3306/kbs?useSSL=false", "kbs", "Zn7OG-6fJ!4M");
+                // MySQL: "jdbc:mysql://hostname:port/databaseName", "username", "password"
+        ) {
+            int logID = 0;
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery("Select Bericht, Tijd, Naam from log l JOIN component c ON l.ComponentID = c.ComponentID");
+            while (rs.next()) {
+                String naam = rs.getString("naam");
+                String bericht = rs.getString("Bericht");
+                Timestamp tijd = rs.getTimestamp("tijd");
+
+                System.out.format("%s, %s, %s\n", naam, bericht, tijd);
+
+                // print the results
+
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
