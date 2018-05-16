@@ -1,6 +1,7 @@
 package Test;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Database {
 
@@ -30,9 +31,6 @@ public class Database {
         } catch(SQLException ex) {
             ex.printStackTrace();
         }
-    }
-    public void update(){
-        this.update("component","Naam","naam","test", "test2");
     }
 
     public void delete(String table,String column1,String index1){
@@ -119,6 +117,8 @@ public class Database {
             ex.printStackTrace();
         }
     }
+
+
     public void insertSamenstelling(String naam, int Bak1, int Bak2, int Bak3, int Bak4){
         try (
                 // Step 1: Allocate a database 'Connection' object
@@ -149,7 +149,7 @@ public class Database {
             ex.printStackTrace();
         }
     }
-    public void SelectSamenstelling(){
+    public  void SelectSamenstelling(){
         try (
                 // Step 1: Allocate a database 'Connection' object
                 Connection conn = DriverManager.getConnection(
@@ -171,6 +171,28 @@ public class Database {
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
+        }
+    }
+    public ArrayList<String> SelectNaamSamenstelling(){
+        try (
+                // Step 1: Allocate a database 'Connection' object
+                Connection conn = DriverManager.getConnection(
+                        "jdbc:mysql://den1.mysql2.gear.host:3306/kbs?useSSL=false", "kbs", "Zn7OG-6fJ!4M");
+                // MySQL: "jdbc:mysql://hostname:port/databaseName", "username", "password"
+        ) {
+            ArrayList<String> namen = new ArrayList<>();
+            int logID = 0;
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery("Select naam from samenstelling");
+            while (rs.next()) {
+                String naam = rs.getString("naam");
+                // print the results
+                namen.add(naam);
+            }
+            return namen;
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+            return null;
         }
     }
 }

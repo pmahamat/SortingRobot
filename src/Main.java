@@ -23,6 +23,7 @@ public class Main extends Application {
         SamenstelRobot samenstelRobot = new SamenstelRobot("samenstelrobot");
         Systeem systeem = new Systeem(sorteerRobot, samenstelRobot);
 
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Test/HMI.fxml"));
         Parent root = loader.load();
         MainController controller = loader.getController();

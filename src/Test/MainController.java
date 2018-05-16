@@ -10,7 +10,11 @@ import javafx.scene.text.Text;
 
 import javafx.event.ActionEvent;
 
+import java.util.ArrayList;
+
 public class MainController {
+
+    private Database database = new Database();
 
     public void setSysteem(Systeem systeem) {
         this.systeem = systeem;
@@ -52,6 +56,9 @@ public class MainController {
 
     @FXML
     private Text scannedObjectsCounter;
+
+    @FXML
+    private TextField opslaanText;
 
     @FXML
     private Button StartStop1;
@@ -208,6 +215,20 @@ public class MainController {
 
     @FXML
     public void slaOp() {
+        boolean Naambestaad = false;
+        ArrayList<String> namen = database.SelectNaamSamenstelling();
+        System.out.println(opslaanText.getText());
+        for (String naam: namen){
+            if (naam.equals(opslaanText.getText())){
+                Naambestaad = true;
+
+
+            }
+            System.out.println(naam);
+        }
+        if (Naambestaad == true){
+            System.out.println("naam bestaad al");
+        }
 
     }
 
