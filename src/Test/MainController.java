@@ -21,7 +21,8 @@ public class MainController {
         this.systeem = systeem;
     }
 
-    private SerialConnector serialConnector = new SerialConnector();
+    private SerialConnector serialConnector1 = new SerialConnector(1);
+    private SerialConnector serialConnector2 = new SerialConnector(2);
 
     private Systeem systeem;
 
@@ -133,7 +134,7 @@ public class MainController {
 
     }
     @FXML
-    void setAantal4(InputMethodEvent event) {
+    void setAantal4(InputMethodEvent event){
 
     }
 
@@ -146,7 +147,7 @@ public class MainController {
     void setColor1(ActionEvent event) {
         systeem.getSorteerRobot().setKleur1(kleur1.getValue());
 
-        serialConnector.SendMessage("{\n" +
+        serialConnector1.SendMessage("{\n" +
                 "\"type\": \"kleur1\",\n" +
                 "\"red\":\"" + SorteerRobot.getKleur1().getRed() + "\",\n" +
                 "\"green\" : \"" + SorteerRobot.getKleur1().getGreen() + "\",\n" +
@@ -158,7 +159,7 @@ public class MainController {
     void setColor2(ActionEvent event) {
         systeem.getSorteerRobot().setKleur2(kleur2.getValue());
 
-        serialConnector.SendMessage("{\n" +
+        serialConnector1.SendMessage("{\n" +
                 "\"type\": \"kleur2\",\n" +
                 "\"red\":\"" + SorteerRobot.getKleur2().getRed() + "\",\n" +
                 "\"green\" : \"" + SorteerRobot.getKleur2().getGreen() + "\",\n" +
@@ -170,7 +171,7 @@ public class MainController {
     void setColor3(ActionEvent event) {
         systeem.getSorteerRobot().setKleur3(kleur3.getValue());
 
-        serialConnector.SendMessage("{\n" +
+        serialConnector1.SendMessage("{\n" +
                 "\"type\": \"kleur3\",\n" +
                 "\"red\":\"" + SorteerRobot.getKleur3().getRed() + "\",\n" +
                 "\"green\" : \"" + SorteerRobot.getKleur3().getGreen() + "\",\n" +
@@ -182,7 +183,7 @@ public class MainController {
     void setColor4(ActionEvent event) {
         systeem.getSorteerRobot().setKleur4(kleur4.getValue());
 
-        serialConnector.SendMessage("{\n" +
+        serialConnector1.SendMessage("{\n" +
                 "\"type\": \"kleur4\",\n" +
                 "\"red\":\"" + SorteerRobot.getKleur4().getRed() + "\",\n" +
                 "\"green\" : \"" + SorteerRobot.getKleur4().getGreen() + "\",\n" +
@@ -193,19 +194,25 @@ public class MainController {
     @FXML
     public void startRobot2(javafx.event.ActionEvent actionEvent) {
         systeem.getSamenstelRobot().switchPower();
-        if (systeem.getSamenstelRobot().getOn()) {
+        if(systeem.getSamenstelRobot().getOn())
+        {
             statusRobot2.setFill(Color.GREEN);
-        } else {
+        }
+        else
+        {
             statusRobot2.setFill(Color.RED);
         }
     }
 
     @FXML
-    public void startRobot1() {
+    public  void  startRobot1(){
         systeem.getSorteerRobot().switchPower();
-        if (systeem.getSorteerRobot().getOn()) {
+        if(systeem.getSorteerRobot().getOn())
+        {
             statusRobot1.setFill(Color.GREEN);
-        } else {
+        }
+        else
+        {
             statusRobot1.setFill(Color.RED);
         }
     }
@@ -237,9 +244,11 @@ public class MainController {
     @FXML
     public void openLog1(){
         LogScreen logScreen1 = new LogScreen();
+        Database db = new Database();
+        db.selectLog();
     }
     @FXML
-    public void openLog2() {
+    public void openLog2(){
 
     }
 
@@ -250,7 +259,7 @@ public class MainController {
 
     @FXML
     public void verzend2() {
-        serialConnector.SendMessage(
+        serialConnector2.SendMessage(
                 "{\"type\":\"samenstelling\"," +
                         "\"kleur1\":\"" + aantalKleur1.getValue() + "\"," +
                         "\"kleur2\":\"" + aantalKleur2.getValue() + "\"," +

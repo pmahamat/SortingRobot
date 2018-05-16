@@ -6,12 +6,12 @@ import com.fazecast.jSerialComm.SerialPortEvent;
 
 public class SerialConnector {
     private static SerialPort[] serialPorts = SerialPort.getCommPorts();
-    private static SerialPort arduino;
+    private SerialPort arduino;
 
-    SerialConnector() {
+    SerialConnector(int port) {
         try {
 
-            arduino = serialPorts[0];
+            arduino = serialPorts[port -1];
 
             arduino.openPort();
             arduino.setBaudRate(9600);
