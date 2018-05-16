@@ -15,7 +15,7 @@ public class LogScreen extends JDialog {
 
         logTekst = new JTextArea(40,40);
         logTekst.setEditable(false);
-        logTekst.setText("testetstettasdasdasdasdasdasdasdasd\nasdasdasdasdasd");
+        logTekst.setText(Database.selectLog());
         add(logTekst);
         setVisible(true);
     }
