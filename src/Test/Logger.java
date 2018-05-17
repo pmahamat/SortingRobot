@@ -1,7 +1,5 @@
 package Test;
 
-import java.awt.*;
-
 public class Logger {
     private Database database = new Database();
 

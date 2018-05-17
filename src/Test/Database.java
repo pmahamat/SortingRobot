@@ -181,12 +181,10 @@ public class Database {
                 // MySQL: "jdbc:mysql://hostname:port/databaseName", "username", "password"
         ) {
             ArrayList<String> namen = new ArrayList<>();
-            int logID = 0;
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery("Select naam from samenstelling");
             while (rs.next()) {
                 String naam = rs.getString("naam");
-                // print the results
                 namen.add(naam);
             }
             return namen;

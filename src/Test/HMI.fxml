@@ -208,7 +208,7 @@
                               <Button fx:id="opslaanButton" layoutX="165.0" layoutY="135.0" mnemonicParsing="false" onAction="#slaOp" text="Opslaan" AnchorPane.rightAnchor="70.19999999999999" />
                               <TextField fx:id="opslaanText" layoutX="226.0" layoutY="135.0" prefHeight="26.0" prefWidth="62.0" AnchorPane.rightAnchor="6.0" />
                               <Button fx:id="verzenden2" layoutX="221.0" layoutY="168.0" mnemonicParsing="false" onAction="#verzend2" text="Verzenden" />
-                              <ChoiceBox fx:id="samenstellingen" layoutX="139.0" layoutY="56.0" onMouseClicked="#getSamenstellingen" prefWidth="150.0" />
+                              <ChoiceBox fx:id="samenstellingen" layoutX="139.0" layoutY="56.0" onAction="#getSamenstellingen" prefWidth="150.0" />
                               <Separator layoutY="194.0" prefHeight="15.0" prefWidth="294.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="194.0" />
                               <Button fx:id="logRobot1" layoutX="6.0" layoutY="209.0" mnemonicParsing="false" onAction="#openLog1" prefHeight="26.0" prefWidth="62.0" text="Log" AnchorPane.leftAnchor="6.0" />
                            </children>

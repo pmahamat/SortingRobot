@@ -1,5 +1,7 @@
 package Test;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,6 +14,7 @@ import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainController {
 
@@ -19,6 +22,7 @@ public class MainController {
 
     public void setSysteem(Systeem systeem) {
         this.systeem = systeem;
+        samenstellingen.getItems().addAll(database.SelectNaamSamenstelling());
     }
 
     private SerialConnector serialConnector1 = new SerialConnector(1);
@@ -96,19 +100,19 @@ public class MainController {
     private Label statusRobot2Batch;
 
     @FXML
-    private Spinner<?> aantalKleur1;
+    private Spinner<Integer> aantalKleur1;
 
     @FXML
-    private Spinner<?> aantalKleur2;
+    private Spinner<Integer> aantalKleur2;
 
     @FXML
-    private Spinner<?> aantalKleur3;
+    private Spinner<Integer> aantalKleur3;
 
     @FXML
-    private Spinner<?> aantalKleur4;
+    private Spinner<Integer> aantalKleur4;
 
     @FXML
-    private Spinner<?> aantalBatches;
+    private Spinner<Integer> aantalBatches;
 
     @FXML
     private Button startStop2;
@@ -228,22 +232,25 @@ public class MainController {
             }
             System.out.println(naam);
         }
-        if (Naambestaad == true){
+        if (Naambestaad){
             System.out.println("naam bestaad al");
+        }else{
+            int kleur1aantal = aantalKleur1.getValue();
+            int kleur2aantal = aantalKleur2.getValue();
+            int kleur3aantal = aantalKleur3.getValue();
+            int kleur4aantal = aantalKleur4.getValue();
+            database.insertSamenstelling(opslaanText.getText(),kleur1aantal,kleur2aantal ,kleur3aantal,kleur4aantal);
         }
-
     }
 
     @FXML
     public void getSamenstellingen(){
-
+        System.out.println(samenstellingen.getValue());
     }
 
     @FXML
     public void openLog1(){
-        LogScreen logScreen1 = new LogScreen();
-        Database db = new Database();
-        db.selectLog();
+
     }
     @FXML
     public void openLog2(){
