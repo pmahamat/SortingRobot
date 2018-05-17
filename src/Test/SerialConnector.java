@@ -4,7 +4,10 @@ import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;
 import com.fazecast.jSerialComm.SerialPortEvent;
 
+
+
 public class SerialConnector {
+    String test = "";
     private static SerialPort[] serialPorts = SerialPort.getCommPorts();
     private SerialPort arduino;
 
@@ -30,7 +33,17 @@ public class SerialConnector {
                         return;
                     byte[] newData = new byte[arduino.bytesAvailable()];
                     arduino.readBytes(newData, newData.length);
-                    for (byte aNewData : newData) System.out.print((char) aNewData);
+                    String json = "";
+
+                    for (byte aNewData : newData) {
+                        json+=((char) aNewData);
+                    }
+                    if (!json.contains("\n")){
+                        test += json;
+                    }else{
+                    System.out.println(test);
+                    test = "";
+                    }
                 }
             });
 
