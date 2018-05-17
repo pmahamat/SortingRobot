@@ -212,7 +212,7 @@ public class Database {
                 Timestamp tijd = rs.getTimestamp("tijd");
 
 //                System.out.format("%s, %s, %s\n", naam, bericht, tijd);
-                result += naam + " " + bericht + " " + tijd.toString() + "\n";
+                result += tijd.toString() + " \t " +  naam + " " + bericht + "\n";
 
             }
             return result;
