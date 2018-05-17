@@ -255,10 +255,7 @@ public class MainController {
 
     @FXML
     public void openLog1(){
-
-    }
-    @FXML
-    public void openLog2(){
+        LogScreen logscreen1 = new LogScreen();
 
     }
 
