@@ -149,29 +149,31 @@ public class Database {
             ex.printStackTrace();
         }
     }
-    public  void SelectSamenstelling(){
+    public ArrayList<Integer> SelectSamenstelling(String naam){
         try (
                 // Step 1: Allocate a database 'Connection' object
                 Connection conn = DriverManager.getConnection(
                         "jdbc:mysql://den1.mysql2.gear.host:3306/kbs?useSSL=false", "kbs", "Zn7OG-6fJ!4M");
                 // MySQL: "jdbc:mysql://hostname:port/databaseName", "username", "password"
         ) {
-            int logID = 0;
+            ArrayList<Integer> waardeBakken = new ArrayList<>();
             Statement stmt = (Statement) conn.createStatement();
-            ResultSet rs = stmt.executeQuery("Select * from samenstelling");
+            ResultSet rs = stmt.executeQuery("Select * from samenstelling where naam = '" + naam +"'");
             while (rs.next()) {
-                String naam = rs.getString("naam");
                 int bak1 = rs.getInt("Bak1");
                 int bak2 = rs.getInt("Bak2");
                 int bak3 = rs.getInt("Bak3");
                 int bak4 = rs.getInt("Bak4");
-
-                // print the results
-                System.out.format("%s, %s, %s, %s, %s\n", naam, bak1, bak2, bak3, bak4);
+                waardeBakken.add(bak1);
+                waardeBakken.add(bak2);
+                waardeBakken.add(bak3);
+                waardeBakken.add(bak4);
+                return waardeBakken;
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
         }
+        return null;
     }
     public ArrayList<String> SelectNaamSamenstelling(){
         try (

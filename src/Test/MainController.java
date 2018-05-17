@@ -245,7 +245,12 @@ public class MainController {
 
     @FXML
     public void getSamenstellingen(){
-        System.out.println(samenstellingen.getValue());
+        ArrayList<Integer> waardeBakken = new ArrayList<>();
+        waardeBakken = database.SelectSamenstelling(samenstellingen.getValue().toString());
+        aantalKleur1.getValueFactory().setValue(waardeBakken.get(0));
+        aantalKleur2.getValueFactory().setValue(waardeBakken.get(1));
+        aantalKleur3.getValueFactory().setValue(waardeBakken.get(2));
+        aantalKleur4.getValueFactory().setValue(waardeBakken.get(3));
     }
 
     @FXML
