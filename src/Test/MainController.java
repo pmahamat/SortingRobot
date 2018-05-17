@@ -225,8 +225,6 @@ public class MainController {
         for (String naam: namen){
             if (naam.equals(opslaanText.getText())){
                 Naambestaad = true;
-
-
             }
             System.out.println(naam);
         }

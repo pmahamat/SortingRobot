@@ -31,7 +31,7 @@ public class Main extends Application {
         controller.setSysteem(systeem);
 
         primaryStage.setTitle("HMI");
-        primaryStage.setScene(new Scene(root, 650, 450));
+        primaryStage.setScene(new Scene(root, 650, 500));
         primaryStage.show();
     }
 }
