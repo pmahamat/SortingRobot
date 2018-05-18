@@ -4,17 +4,13 @@ import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;
 import com.fazecast.jSerialComm.SerialPortEvent;
 import com.mysql.cj.xdevapi.JsonString;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+
 
 public class SerialConnector {
     String test = "";
     String Stringaf = "";
     private static SerialPort[] serialPorts = SerialPort.getCommPorts();
     private SerialPort arduino;
-    boolean done = false;
 
     SerialConnector(int port) {
         try {
@@ -54,42 +50,16 @@ public class SerialConnector {
                         test = "";
                         test += json.substring(n + 1);
 
-                        String testString = "{\n" +
-                                "    \"title\": \"Person\",\n" +
-                                "    \"type\": \"object\",\n" +
-                                "    \"properties\": {\n" +
-                                "        \"firstName\": {\n" +
-                                "            \"type\": \"string\"\n" +
-                                "        },\n" +
-                                "        \"lastName\": {\n" +
-                                "            \"type\": \"string\"\n" +
-                                "        },\n" +
-                                "        \"age\": {\n" +
-                                "            \"description\": \"Age in years\",\n" +
-                                "            \"type\": \"integer\",\n" +
-                                "            \"minimum\": 0\n" +
-                                "        }\n" +
-                                "    },\n" +
-                                "    \"required\": [\"firstName\", \"lastName\"]\n" +
-                                "}";
-                        JSONParser parser = new JSONParser();
-                        try {
-                            JSONObject jsonObj = (JSONObject) parser.parse(Stringaf);
-                            String name = (String) jsonObj.get("type");
-                            System.out.println(name);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                            System.out.println("mislukt");
-                        }
+
                     }
                     if (Stringaf.contains("lastscannedColor")) {
 //                        System.out.println("test");
                         int y = Stringaf.indexOf("rood");
-                        System.out.println(Stringaf.substring(y + 6, y + 9).replaceAll("[^0-9]", ""));
+                        int rood = Integer.parseInt(Stringaf.substring(y + 6, y + 9).replaceAll("[^0-9]", ""));
                         y = Stringaf.indexOf("blauw");
-                        System.out.println(Stringaf.substring(y + 7, y + 10).replaceAll("[^0-9]", ""));
+                        int blauw = Integer.parseInt(Stringaf.substring(y + 7, y + 10).replaceAll("[^0-9]", ""));
                         y = Stringaf.indexOf("groen");
-                        System.out.println(Stringaf.substring(y + 7, y + 10).replaceAll("[^0-9]", ""));
+                        int groen = Integer.parseInt(Stringaf.substring(y + 7, y + 10).replaceAll("[^0-9]", ""));
 //                        System.out.println(y);
                         Stringaf = "";
                     }
