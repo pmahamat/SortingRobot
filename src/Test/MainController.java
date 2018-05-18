@@ -200,6 +200,14 @@ public class MainController {
                 "}");
     }
 
+    public void setStatusRobot1() {
+        if (systeem.getSorteerRobot().getOn()) {
+            statusRobot1.setFill(Color.GREEN);
+        } else {
+            statusRobot1.setFill(Color.RED);
+        }
+    }
+
     @FXML
     public void startRobot2(javafx.event.ActionEvent actionEvent) {
         systeem.getSamenstelRobot().switchPower();
@@ -311,12 +319,16 @@ public class MainController {
         this.textStatusBakje4 = textStatusBakje4;
     }
 
+    public Systeem getSysteem() {
+        return systeem;
+    }
+
     public void setTextStatusBakje5(Text textStatusBakje5) {
         this.textStatusBakje5 = textStatusBakje5;
     }
 
-    public void setScannedObjectsCounter(Text scannedObjectsCounter) {
-        this.scannedObjectsCounter = scannedObjectsCounter;
+    public void setScannedObjectsCounter(String text) {
+        this.scannedObjectsCounter.setText(text);
     }
 
     public void setStatusRobot2Bakje1(Label statusRobot2Bakje1) {
