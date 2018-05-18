@@ -20,8 +20,4 @@ public class Robot {
         return isOn;
     }
 
-
-    public void setOn(Boolean on) {
-        isOn = on;
-    }
 }

@@ -77,7 +77,7 @@ public class SerialConnector {
 
                                 String counter = (String) jsonObj.get("objectCounter");
 //                                int counterInt = Integer.parseInt(counter);
-                                var kleur = Color.rgb(roodInt, groenInt, blauwInt);
+                                Color kleur = Color.rgb(roodInt, groenInt, blauwInt);
 
                                 controller.setScannedObjectsCounter(counter);
                                 controller.setLastScannedColor(kleur);
@@ -101,10 +101,10 @@ public class SerialConnector {
                                 String status = (String) jsonObj.get("status");
                                 int statusInt = Integer.parseInt(status);
                                 if (statusInt == 1){
-                                    controller.statusRobot1.setFill(Color.GREEN);
+                                    controller.statusRobot2.setFill(Color.GREEN);
                                     controller.getSysteem().getSamenstelRobot().setOn(true);
                                 }else {
-                                    controller.statusRobot1.setFill(Color.RED);
+                                    controller.statusRobot2.setFill(Color.RED);
                                     controller.getSysteem().getSamenstelRobot().setOn(false);
                                 }
                             }

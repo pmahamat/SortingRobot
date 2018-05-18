@@ -126,7 +126,7 @@ public class MainController {
     private Button startStop2;
 
     @FXML
-    private Circle statusRobot2;
+    public Circle statusRobot2;
 
     @FXML
     private ChoiceBox samenstellingen;
@@ -329,10 +329,6 @@ public class MainController {
 
     public void setTextStatusBakje4(Text textStatusBakje4) {
         this.textStatusBakje4 = textStatusBakje4;
-    }
-
-    public Systeem getSysteem() {
-        return systeem;
     }
 
     public void setTextStatusBakje5(Text textStatusBakje5) {
