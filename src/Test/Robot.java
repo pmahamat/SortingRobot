@@ -20,7 +20,8 @@ public class Robot {
         return isOn;
     }
 
-    public String getNaam() {
-        return naam;
+
+    public void setOn(Boolean on) {
+        isOn = on;
     }
 }

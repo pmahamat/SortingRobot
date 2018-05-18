@@ -29,6 +29,10 @@ public class MainController {
         samenstellingen.getItems().addAll(alpha);
     }
 
+    public Systeem getSysteem() {
+        return systeem;
+    }
+
     private SerialConnector serialConnector1 = new SerialConnector(1, this);
     private SerialConnector serialConnector2 = new SerialConnector(2, this);
 
@@ -74,7 +78,7 @@ public class MainController {
     private Button StartStop1;
 
     @FXML
-    private Circle statusRobot1;
+    public Circle statusRobot1;
 
     @FXML
     private ColorPicker kleur1;
@@ -162,6 +166,8 @@ public class MainController {
                 "\"green\" : \"" + SorteerRobot.getKleur1().getGreen() + "\",\n" +
                 "\"blue\": \"" + SorteerRobot.getKleur1().getBlue() + "\"\n" +
                 "}");
+
+        cirlceStatusBakje1.setFill(kleur1.getValue());
     }
 
     @FXML
@@ -174,6 +180,8 @@ public class MainController {
                 "\"green\" : \"" + SorteerRobot.getKleur2().getGreen() + "\",\n" +
                 "\"blue\": \"" + SorteerRobot.getKleur2().getBlue() + "\"\n" +
                 "}");
+
+        circleStatusBakje2.setFill(kleur2.getValue());
     }
 
     @FXML
@@ -186,6 +194,8 @@ public class MainController {
                 "\"green\" : \"" + SorteerRobot.getKleur3().getGreen() + "\",\n" +
                 "\"blue\": \"" + SorteerRobot.getKleur3().getBlue() + "\"\n" +
                 "}");
+
+        circleStatusBakje3.setFill(kleur3.getValue());
     }
 
     @FXML
@@ -198,6 +208,8 @@ public class MainController {
                 "\"green\" : \"" + SorteerRobot.getKleur4().getGreen() + "\",\n" +
                 "\"blue\": \"" + SorteerRobot.getKleur4().getBlue() + "\"\n" +
                 "}");
+
+        circleStatusBakje4.setFill(kleur4.getValue());
     }
 
     public void setStatusRobot1() {
