@@ -29,6 +29,10 @@ public class MainController {
         samenstellingen.getItems().addAll(alpha);
     }
 
+    public Systeem getSysteem() {
+        return systeem;
+    }
+
     private SerialConnector serialConnector1 = new SerialConnector(1, this);
     private SerialConnector serialConnector2 = new SerialConnector(2, this);
 
@@ -74,7 +78,7 @@ public class MainController {
     private Button StartStop1;
 
     @FXML
-    private Circle statusRobot1;
+    public Circle statusRobot1;
 
     @FXML
     private ColorPicker kleur1;

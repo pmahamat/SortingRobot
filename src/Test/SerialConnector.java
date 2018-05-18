@@ -74,8 +74,20 @@ public class SerialConnector {
                                 int groenInt = Integer.parseInt(groen);
                                 String blauw = (String) jsonObj.get("blauw");
                                 int blauwInt = Integer.parseInt(blauw);
-                                var kleur = Color.rgb(roodInt, groenInt, blauwInt);
+                                Color kleur = Color.rgb(roodInt, groenInt, blauwInt);
                                 controller.setLastScannedColor(kleur);
+                            }
+                            if(type.equals("statusRobot2")){
+                                System.out.println("statusRobot2");
+                                String status = (String) jsonObj.get("status");
+                                int statusInt = Integer.parseInt(status);
+                                if (statusInt == 1){
+                                    controller.statusRobot1.setFill(Color.GREEN);
+                                    controller.getSysteem().getSamenstelRobot().setOn(true);
+                                }else {
+                                    controller.statusRobot1.setFill(Color.RED);
+                                    controller.getSysteem().getSamenstelRobot().setOn(false);
+                                }
                             }
                         } catch (ParseException e) {
                             e.printStackTrace();

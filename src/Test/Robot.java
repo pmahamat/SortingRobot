@@ -16,7 +16,9 @@ public class Robot {
         return isOn;
     }
 
-    public String getNaam() {
-        return naam;
+    public String getNaam()
+
+    public void setOn(Boolean on) {
+        isOn = on;
     }
 }
