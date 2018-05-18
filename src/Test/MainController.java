@@ -28,8 +28,8 @@ public class MainController {
         samenstellingen.getItems().addAll(alpha);
     }
 
-    private SerialConnector serialConnector1 = new SerialConnector(1);
-    private SerialConnector serialConnector2 = new SerialConnector(2);
+    private SerialConnector serialConnector1 = new SerialConnector(1, this);
+    private SerialConnector serialConnector2 = new SerialConnector(2, this);
 
     private Systeem systeem;
 
@@ -279,8 +279,8 @@ public class MainController {
                         "\"batches\":\"" + aantalBatches.getValue() + "\"}");
     }
 
-    public void setLastScannedColor(Rectangle lastScannedColor) {
-        this.lastScannedColor = lastScannedColor;
+    public void setLastScannedColor(Color kleur) {
+        lastScannedColor.setFill(kleur);
     }
 
     public void setCirlceStatusBakje1(Circle cirlceStatusBakje1) {
