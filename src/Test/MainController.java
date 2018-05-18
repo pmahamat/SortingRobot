@@ -160,6 +160,8 @@ public class MainController {
                 "\"green\" : \"" + SorteerRobot.getKleur1().getGreen() + "\",\n" +
                 "\"blue\": \"" + SorteerRobot.getKleur1().getBlue() + "\"\n" +
                 "}");
+
+        cirlceStatusBakje1.setFill(kleur1.getValue());
     }
 
     @FXML
@@ -172,6 +174,8 @@ public class MainController {
                 "\"green\" : \"" + SorteerRobot.getKleur2().getGreen() + "\",\n" +
                 "\"blue\": \"" + SorteerRobot.getKleur2().getBlue() + "\"\n" +
                 "}");
+
+        circleStatusBakje2.setFill(kleur2.getValue());
     }
 
     @FXML
@@ -184,6 +188,8 @@ public class MainController {
                 "\"green\" : \"" + SorteerRobot.getKleur3().getGreen() + "\",\n" +
                 "\"blue\": \"" + SorteerRobot.getKleur3().getBlue() + "\"\n" +
                 "}");
+
+        circleStatusBakje3.setFill(kleur3.getValue());
     }
 
     @FXML
@@ -196,6 +202,8 @@ public class MainController {
                 "\"green\" : \"" + SorteerRobot.getKleur4().getGreen() + "\",\n" +
                 "\"blue\": \"" + SorteerRobot.getKleur4().getBlue() + "\"\n" +
                 "}");
+
+        circleStatusBakje4.setFill(kleur4.getValue());
     }
 
     @FXML
