@@ -76,7 +76,7 @@ public class SerialConnector {
                         try {
                             JSONObject jsonObj = (JSONObject) parser.parse(Stringaf);
                             String name = (String) jsonObj.get("type");
-                            System.out.println(name);
+
                         } catch (ParseException e) {
                             e.printStackTrace();
                             System.out.println("mislukt");
