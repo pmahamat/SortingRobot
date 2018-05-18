@@ -20,6 +20,7 @@ import java.util.List;
 public class MainController {
 
     private Database database = new Database();
+    private Logger log = new Logger();
 
     public void setSysteem(Systeem systeem) {
         this.systeem = systeem;
@@ -28,8 +29,8 @@ public class MainController {
         samenstellingen.getItems().addAll(alpha);
     }
 
-    private SerialConnector serialConnector1 = new SerialConnector(1);
-    private SerialConnector serialConnector2 = new SerialConnector(2);
+    private SerialConnector serialConnector1 = new SerialConnector(1, this);
+    private SerialConnector serialConnector2 = new SerialConnector(2, this);
 
     private Systeem systeem;
 
@@ -140,8 +141,9 @@ public class MainController {
     void setAantal3(InputMethodEvent event) {
 
     }
+
     @FXML
-    void setAantal4(InputMethodEvent event){
+    void setAantal4(InputMethodEvent event) {
 
     }
 
@@ -209,25 +211,19 @@ public class MainController {
     @FXML
     public void startRobot2(javafx.event.ActionEvent actionEvent) {
         systeem.getSamenstelRobot().switchPower();
-        if(systeem.getSamenstelRobot().getOn())
-        {
+        if (systeem.getSamenstelRobot().getOn()) {
             statusRobot2.setFill(Color.GREEN);
-        }
-        else
-        {
+        } else {
             statusRobot2.setFill(Color.RED);
         }
     }
 
     @FXML
-    public  void  startRobot1(){
+    public void startRobot1() {
         systeem.getSorteerRobot().switchPower();
-        if(systeem.getSorteerRobot().getOn())
-        {
+        if (systeem.getSorteerRobot().getOn()) {
             statusRobot1.setFill(Color.GREEN);
-        }
-        else
-        {
+        } else {
             statusRobot1.setFill(Color.RED);
         }
     }
@@ -237,26 +233,26 @@ public class MainController {
         boolean Naambestaad = false;
         ArrayList<String> namen = database.SelectNaamSamenstelling();
         System.out.println(opslaanText.getText());
-        for (String naam: namen){
-            if (naam.equals(opslaanText.getText())){
+        for (String naam : namen) {
+            if (naam.equals(opslaanText.getText())) {
                 Naambestaad = true;
             }
             System.out.println(naam);
         }
-        if (Naambestaad){
-            System.out.println("naam bestaad al");
-        }else{
+        if (Naambestaad) {
+            log.Log("samenstelling opslaan mistukt: naam bestaat al", 2);
+        } else {
             int kleur1aantal = aantalKleur1.getValue();
             int kleur2aantal = aantalKleur2.getValue();
             int kleur3aantal = aantalKleur3.getValue();
             int kleur4aantal = aantalKleur4.getValue();
-            database.insertSamenstelling(opslaanText.getText(),kleur1aantal,kleur2aantal ,kleur3aantal,kleur4aantal);
+            database.insertSamenstelling(opslaanText.getText(), kleur1aantal, kleur2aantal, kleur3aantal, kleur4aantal);
             samenstellingen.getItems().addAll(opslaanText.getText());
         }
     }
 
     @FXML
-    public void getSamenstellingen(){
+    public void getSamenstellingen() {
         ArrayList<Integer> waardeBakken;
         waardeBakken = database.SelectSamenstelling(samenstellingen.getValue().toString());
         aantalKleur1.getValueFactory().setValue(waardeBakken.get(0));
@@ -266,7 +262,7 @@ public class MainController {
     }
 
     @FXML
-    public void openLog1(){
+    public void openLog1() {
         LogScreen logscreen1 = new LogScreen();
 
     }
@@ -287,8 +283,8 @@ public class MainController {
                         "\"batches\":\"" + aantalBatches.getValue() + "\"}");
     }
 
-    public void setLastScannedColor(Rectangle lastScannedColor) {
-        this.lastScannedColor = lastScannedColor;
+    public void setLastScannedColor(Color kleur) {
+        lastScannedColor.setFill(kleur);
     }
 
     public void setCirlceStatusBakje1(Circle cirlceStatusBakje1) {

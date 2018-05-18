@@ -4,10 +4,14 @@ import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;
 import com.fazecast.jSerialComm.SerialPortEvent;
 import com.mysql.cj.xdevapi.JsonString;
+import javafx.scene.paint.Color;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import javafx.scene.paint.*;
+
+import java.awt.*;
 
 public class SerialConnector {
     String test = "";
@@ -15,10 +19,11 @@ public class SerialConnector {
     private static SerialPort[] serialPorts = SerialPort.getCommPorts();
     private SerialPort arduino;
     boolean done = false;
+    MainController controller;
 
-    SerialConnector(int port) {
+    SerialConnector(int port, MainController controller) {
         try {
-
+            this.controller = controller;
             arduino = serialPorts[port - 1];
 
             arduino.openPort();
@@ -59,8 +64,19 @@ public class SerialConnector {
                       JSONParser parser = new JSONParser();
                         try {
                             JSONObject jsonObj = (JSONObject) parser.parse(Stringaf);
-                            String name = (String) jsonObj.get("type");
-                            System.out.println(name);
+                            String type = (String) jsonObj.get("type");
+                            System.out.println(jsonObj.toJSONString());
+                            if(type.equals("lastscannedColor")){
+                                System.out.println("last scanned");
+                                String rood = (String) jsonObj.get("rood");
+                                int roodInt = Integer.parseInt(rood);
+                                String groen = (String) jsonObj.get("groen");
+                                int groenInt = Integer.parseInt(groen);
+                                String blauw = (String) jsonObj.get("blauw");
+                                int blauwInt = Integer.parseInt(blauw);
+                                var kleur = Color.rgb(roodInt, groenInt, blauwInt);
+                                controller.setLastScannedColor(kleur);
+                            }
                         } catch (ParseException e) {
                             e.printStackTrace();
                             System.out.println("mislukt");
