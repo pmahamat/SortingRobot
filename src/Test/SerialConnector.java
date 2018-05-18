@@ -11,12 +11,11 @@ public class SerialConnector {
     String Stringaf = "";
     private static SerialPort[] serialPorts = SerialPort.getCommPorts();
     private SerialPort arduino;
-    boolean done = false;
 
     SerialConnector(int port) {
         try {
 
-            arduino = serialPorts[port -1];
+            arduino = serialPorts[port - 1];
 
             arduino.openPort();
             arduino.setBaudRate(9600);
@@ -38,29 +37,29 @@ public class SerialConnector {
                     String json = "";
 
                     for (byte aNewData : newData) {
-                        json+=((char) aNewData);
+                        json += ((char) aNewData);
                     }
-                    if (!json.contains("\n")){
+                    if (!json.contains("\n")) {
                         test += json;
-                    }else{
+                    } else {
                         int n = json.indexOf("\n");
                         test += json.substring(0, n);
-                        test.replace("\n","");
+                        test.replace("\n", "");
                         System.out.println(test);
                         Stringaf = test;
                         test = "";
-                        test += json.substring(n+1);
+                        test += json.substring(n + 1);
 
 
                     }
-                    if (Stringaf.contains("lastscannedColor")){
+                    if (Stringaf.contains("lastscannedColor")) {
 //                        System.out.println("test");
                         int y = Stringaf.indexOf("rood");
-                        System.out.println(Stringaf.substring(y+6,y+9).replaceAll("[^0-9]",""));
+                        int rood = Integer.parseInt(Stringaf.substring(y + 6, y + 9).replaceAll("[^0-9]", ""));
                         y = Stringaf.indexOf("blauw");
-                        System.out.println(Stringaf.substring(y+7,y+10).replaceAll("[^0-9]",""));
+                        int blauw = Integer.parseInt(Stringaf.substring(y + 7, y + 10).replaceAll("[^0-9]", ""));
                         y = Stringaf.indexOf("groen");
-                        System.out.println(Stringaf.substring(y+7,y+10).replaceAll("[^0-9]",""));
+                        int groen = Integer.parseInt(Stringaf.substring(y + 7, y + 10).replaceAll("[^0-9]", ""));
 //                        System.out.println(y);
                         Stringaf = "";
                     }
