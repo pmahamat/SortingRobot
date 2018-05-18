@@ -11,10 +11,10 @@ public class SerialConnector {
     String Stringaf = "";
     private static SerialPort[] serialPorts = SerialPort.getCommPorts();
     private SerialPort arduino;
+    boolean done = false;
 
     SerialConnector(int port) {
         try {
-
             arduino = serialPorts[port - 1];
 
             arduino.openPort();
@@ -47,21 +47,26 @@ public class SerialConnector {
                         test.replace("\n", "");
                         System.out.println(test);
                         Stringaf = test;
+                        done = true;
                         test = "";
                         test += json.substring(n + 1);
 
 
                     }
-                    if (Stringaf.contains("lastscannedColor")) {
+                    if (done) {
+                        if (Stringaf.contains("lastscannedColor")) {
 //                        System.out.println("test");
-                        int y = Stringaf.indexOf("rood");
-                        int rood = Integer.parseInt(Stringaf.substring(y + 6, y + 9).replaceAll("[^0-9]", ""));
-                        y = Stringaf.indexOf("blauw");
-                        int blauw = Integer.parseInt(Stringaf.substring(y + 7, y + 10).replaceAll("[^0-9]", ""));
-                        y = Stringaf.indexOf("groen");
-                        int groen = Integer.parseInt(Stringaf.substring(y + 7, y + 10).replaceAll("[^0-9]", ""));
+                            int y = Stringaf.indexOf("rood");
+                            int rood = Integer.parseInt(Stringaf.substring(y + 6, y + 9).replaceAll("[^0-9]", ""));
+                            y = Stringaf.indexOf("blauw");
+                            int blauw = Integer.parseInt(Stringaf.substring(y + 7, y + 10).replaceAll("[^0-9]", ""));
+                            y = Stringaf.indexOf("groen");
+                            int groen = Integer.parseInt(Stringaf.substring(y + 7, y + 10).replaceAll("[^0-9]", ""));
 //                        System.out.println(y);
-                        Stringaf = "";
+                            System.out.println(rood+", " + groen + ", "+blauw);
+                            Stringaf = "";
+                        }
+                        done = false;
                     }
 
                 }
