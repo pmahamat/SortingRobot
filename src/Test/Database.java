@@ -210,8 +210,6 @@ public class Database {
                 String naam = rs.getString("naam");
                 String bericht = rs.getString("Bericht");
                 Timestamp tijd = rs.getTimestamp("tijd");
-
-//                System.out.format("%s, %s, %s\n", naam, bericht, tijd);
                 result += tijd.toString() + " \t " +  naam + " " + bericht + "\n";
 
             }

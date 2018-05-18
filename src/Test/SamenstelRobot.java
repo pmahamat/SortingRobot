@@ -12,4 +12,6 @@ public class SamenstelRobot extends Robot {
     public SamenstelRobot(String naam){
         super(naam);
     }
+
+
 }

@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MainController {
@@ -22,7 +23,9 @@ public class MainController {
 
     public void setSysteem(Systeem systeem) {
         this.systeem = systeem;
-        samenstellingen.getItems().addAll(database.SelectNaamSamenstelling());
+        ArrayList<String> alpha = database.SelectNaamSamenstelling();
+        Collections.sort(alpha);
+        samenstellingen.getItems().addAll(alpha);
     }
 
     private SerialConnector serialConnector1 = new SerialConnector(1);
@@ -240,6 +243,7 @@ public class MainController {
             int kleur3aantal = aantalKleur3.getValue();
             int kleur4aantal = aantalKleur4.getValue();
             database.insertSamenstelling(opslaanText.getText(),kleur1aantal,kleur2aantal ,kleur3aantal,kleur4aantal);
+            samenstellingen.getItems().addAll(opslaanText.getText());
         }
     }
 
