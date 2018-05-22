@@ -62,53 +62,76 @@ public class SerialConnector {
                         test += json.substring(n + 1);
                     }
                     if (done) {
-                        JSONParser parser = new JSONParser();
+                      JSONParser parser = new JSONParser();
                         try {
                             JSONObject jsonObj = (JSONObject) parser.parse(Stringaf);
                             String type = (String) jsonObj.get("type");
 //                            int typeInt = (int) Integer.parseInt(type);
                             System.out.println(jsonObj.toJSONString());
-                            if (type.equals("robot1")) {
-                                System.out.println("last scanned");
+                            if(type.equals("robot1")){
+                                //Counter
+                                Long counter = (Long) jsonObj.get("counter");
+                                System.out.println(counter);
+                                controller.setScannedObjectsCounter(counter);
+
+                                //kleur
                                 String kleur = (String) jsonObj.get("kleur");
-                                if (kleur.equals("rood")) {
+                                if(kleur.equals("rood")){
                                     controller.setLastScannedColor(Color.RED);
-                                } else if (kleur.equals("groen")) {
+                                }else if (kleur.equals("groen")){
                                     controller.setLastScannedColor(Color.GREEN);
-                                } else if (kleur.equals("blauw")) {
+                                }else if (kleur.equals("blauw")) {
                                     controller.setLastScannedColor(Color.BLUE);
-                                } else if (kleur.equals("paars")) {
+                                }else if (kleur.equals("paars")){
                                     controller.setLastScannedColor(Color.PURPLE);
-                                } else if (kleur.equals("oranje")) {
+                                }else if (kleur.equals("oranje")){
                                     controller.setLastScannedColor(Color.ORANGE);
-                                } else if (kleur.equals("geel")) {
+                                }else if (kleur.equals("geel")){
                                     controller.setLastScannedColor(Color.YELLOW);
                                 }
 
-
-//                                controller.setScannedObjectsCounter(counter);
-//                                controller.setLastScannedColor(kleur);
-                            } else if (type.equals("statusRobot1")) {
+                                //Arm
+                                Long bakje = (Long) jsonObj.get("bakje");
+                                switch (bakje.intValue()) {
+                                    case 1:
+                                        controller.setTextStatusBakje1("*");
+                                        break;
+                                    case 2:
+                                        controller.setTextStatusBakje2("*");
+                                        break;
+                                    case 3:
+                                        controller.setTextStatusBakje3("*");
+                                        break;
+                                    case 4:
+                                        controller.setTextStatusBakje4("*");
+                                        break;
+                                    case 5:
+                                        controller.setTextStatusBakje5("*");
+                                        break;
+                                }
+                            }else if(type.equals("statusRobot1")){
                                 String status = (String) jsonObj.get("status");
-                                if (status.equals("1")) {
+                                if(status.equals("1")){
                                     //Aan
                                     System.out.println("on");
                                     controller.getSysteem().getSorteerRobot().setOn(Boolean.TRUE);
                                     controller.setStatusRobot1();
-                                } else {
+                                }else
+                                {
                                     //Uit
                                     System.out.println("off");
                                     controller.getSysteem().getSorteerRobot().setOn(Boolean.FALSE);
                                     controller.setStatusRobot1();
                                 }
-                            } else if (type.equals("statusRobot2")) {
+                            }
+                            if(type.equals("statusRobot2")){
                                 System.out.println("statusRobot2");
                                 String status = (String) jsonObj.get("status");
                                 int statusInt = Integer.parseInt(status);
-                                if (statusInt == 1) {
+                                if (statusInt == 1){
                                     controller.statusRobot2.setFill(Color.GREEN);
                                     controller.getSysteem().getSamenstelRobot().setOn(true);
-                                } else {
+                                }else {
                                     controller.statusRobot2.setFill(Color.RED);
                                     controller.getSysteem().getSamenstelRobot().setOn(false);
                                 }

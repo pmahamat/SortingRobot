@@ -56,6 +56,9 @@ public class MainController {
     private Text textStatusBakje1;
 
     @FXML
+    private Text textStatusBakje2;
+
+    @FXML
     private Text textStatusBakje3;
 
     @FXML
@@ -323,44 +326,69 @@ public class MainController {
         this.circleStatusBakje5 = circleStatusBakje5;
     }
 
-    public void setTextStatusBakje1(Text textStatusBakje1) {
-        this.textStatusBakje1 = textStatusBakje1;
+    public void setTextStatusBakje1(String textStatusBakje1) {
+        clearBakjes();
+        this.textStatusBakje1.setText(textStatusBakje1);
     }
 
-    public void setTextStatusBakje3(Text textStatusBakje3) {
-        this.textStatusBakje3 = textStatusBakje3;
+    public void setTextStatusBakje2(String textStatusBakje2) {
+        clearBakjes();
+        this.textStatusBakje2.setText(textStatusBakje2);
+    }
+    public void setTextStatusBakje3(String textStatusBakje3) {
+        clearBakjes();
+        this.textStatusBakje3.setText(textStatusBakje3);
+    }
+    public void setTextStatusBakje4(String textStatusBakje4) {
+        clearBakjes();
+        this.textStatusBakje4.setText(textStatusBakje4);
+    }
+    public void setTextStatusBakje5(String textStatusBakje5) {
+        clearBakjes();
+        this.textStatusBakje5.setText(textStatusBakje5);
     }
 
-    public void setTextStatusBakje4(Text textStatusBakje4) {
-        this.textStatusBakje4 = textStatusBakje4;
-    }
-
-    public void setTextStatusBakje5(Text textStatusBakje5) {
-        this.textStatusBakje5 = textStatusBakje5;
-    }
-
-    public void setScannedObjectsCounter(String text) {
-        this.scannedObjectsCounter.setText(text);
+    public void setScannedObjectsCounter(Long counter) {
+        this.scannedObjectsCounter.setText(Long.toString(counter));
     }
 
     public void setStatusRobot2Bakje1(Label statusRobot2Bakje1) {
+
         this.statusRobot2Bakje1 = statusRobot2Bakje1;
+
     }
 
     public void setStatusRobot2Bakje2(Label statusRobot2Bakje2) {
+
         this.statusRobot2Bakje2 = statusRobot2Bakje2;
     }
 
     public void setStatusRobot2Bakje3(Label statusRobot2Bakje3) {
+
         this.statusRobot2Bakje3 = statusRobot2Bakje3;
     }
 
     public void setStatusRobot2Bakje4(Label statusRobot2Bakje4) {
+
         this.statusRobot2Bakje4 = statusRobot2Bakje4;
+
     }
 
     public void setStatusRobot2Batch(Label statusRobot2Batch) {
         this.statusRobot2Batch = statusRobot2Batch;
     }
 
+    public void setArmBakje(int bakje){
+        for(int i=5; i>0;i--){
+
+        }
+    }
+
+    private void clearBakjes(){
+        textStatusBakje1.setText("-");
+        textStatusBakje2.setText("-");
+        textStatusBakje3.setText("-");
+        textStatusBakje4.setText("-");
+        textStatusBakje5.setText("-");
+    }
 }
