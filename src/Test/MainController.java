@@ -89,19 +89,19 @@ public class MainController {
     private ComboBox kleur4;
 
     @FXML
-    private Label statusRobot2Bakje1;
+    public Label statusRobot2Bakje1;
 
     @FXML
-    private Label statusRobot2Bakje2;
+    public Label statusRobot2Bakje2;
 
     @FXML
-    private Label statusRobot2Bakje3;
+    public Label statusRobot2Bakje3;
 
     @FXML
-    private Label statusRobot2Bakje4;
+    public Label statusRobot2Bakje4;
 
     @FXML
-    private Label statusRobot2Batch;
+    public Label statusRobot2Batch;
 
     @FXML
     private Spinner<Integer> aantalKleur1;
@@ -246,7 +246,7 @@ public class MainController {
             int kleur2aantal = aantalKleur2.getValue();
             int kleur3aantal = aantalKleur3.getValue();
             int kleur4aantal = aantalKleur4.getValue();
-            database.insertSamenstelling(opslaanText.getText(), kleur1aantal, kleur2aantal, kleur3aantal, kleur4aantal,kleur1.getValue().toString(),kleur2.getValue().toString(),kleur3.getValue().toString(),kleur4.getValue().toString());
+            database.insertSamenstelling(opslaanText.getText(), kleur1aantal, kleur2aantal, kleur3aantal, kleur4aantal, kleur1.getValue().toString(), kleur2.getValue().toString(), kleur3.getValue().toString(), kleur4.getValue().toString());
             samenstellingen.getItems().addAll(opslaanText.getText());
         }
     }

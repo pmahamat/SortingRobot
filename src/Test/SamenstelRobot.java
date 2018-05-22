@@ -9,7 +9,7 @@ public class SamenstelRobot extends Robot {
     private int batchNumber;
     private int curBatch;
 
-    public SamenstelRobot(String naam){
+    public SamenstelRobot(String naam) {
         super(naam);
     }
 
