@@ -77,16 +77,16 @@ public class MainController {
     private Circle statusRobot1;
 
     @FXML
-    private ColorPicker kleur1;
+    private ComboBox kleur1;
 
     @FXML
-    private ColorPicker kleur2;
+    private ComboBox kleur2;
 
     @FXML
-    private ColorPicker kleur3;
+    private ComboBox kleur3;
 
     @FXML
-    private ColorPicker kleur4;
+    private ComboBox kleur4;
 
     @FXML
     private Label statusRobot2Bakje1;
@@ -154,7 +154,7 @@ public class MainController {
 
     @FXML
     void setColor1(ActionEvent event) {
-        systeem.getSorteerRobot().setKleur1(kleur1.getValue());
+//        systeem.getSorteerRobot().setKleur1(kleur1.getValue());
 
         serialConnector1.SendMessage("{\n" +
                 "\"type\": \"kleur1\",\n" +
@@ -166,7 +166,7 @@ public class MainController {
 
     @FXML
     void setColor2(ActionEvent event) {
-        systeem.getSorteerRobot().setKleur2(kleur2.getValue());
+//        systeem.getSorteerRobot().setKleur2(kleur2.getValue());
 
         serialConnector1.SendMessage("{\n" +
                 "\"type\": \"kleur2\",\n" +
@@ -178,7 +178,7 @@ public class MainController {
 
     @FXML
     void setColor3(ActionEvent event) {
-        systeem.getSorteerRobot().setKleur3(kleur3.getValue());
+//        systeem.getSorteerRobot().setKleur3(kleur3.getValue());
 
         serialConnector1.SendMessage("{\n" +
                 "\"type\": \"kleur3\",\n" +
@@ -190,7 +190,7 @@ public class MainController {
 
     @FXML
     void setColor4(ActionEvent event) {
-        systeem.getSorteerRobot().setKleur4(kleur4.getValue());
+//        systeem.getSorteerRobot().setKleur4(kleur4.getValue());
 
         serialConnector1.SendMessage("{\n" +
                 "\"type\": \"kleur4\",\n" +

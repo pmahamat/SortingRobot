@@ -65,22 +65,31 @@ public class SerialConnector {
                         try {
                             JSONObject jsonObj = (JSONObject) parser.parse(Stringaf);
                             String type = (String) jsonObj.get("type");
+//                            int typeInt = (int) Integer.parseInt(type);
                             System.out.println(jsonObj.toJSONString());
-                            if(type.equals("lastscannedColor")){
+                            if(type.equals("robot1")){
                                 System.out.println("last scanned");
-                                String rood = (String) jsonObj.get("rood");
-                                int roodInt = Integer.parseInt(rood);
-                                String groen = (String) jsonObj.get("groen");
-                                int groenInt = Integer.parseInt(groen);
-                                String blauw = (String) jsonObj.get("blauw");
-                                int blauwInt = Integer.parseInt(blauw);
+                                String kleur = (String) jsonObj.get("kleur");
+                                if(kleur.equals("rood")){
+                                    controller.setLastScannedColor(Color.RED);
+                                }else if (kleur.equals("groen")){
+                                    controller.setLastScannedColor(Color.GREEN);
+                                }else if (kleur.equals("blauw")) {
+                                    controller.setLastScannedColor(Color.BLUE);
+                                }else if (kleur.equals("paars")){
+                                    controller.setLastScannedColor(Color.PURPLE);
+                                }else if (kleur.equals("oranje")){
+                                    controller.setLastScannedColor(Color.ORANGE);
+                                }else if (kleur.equals("geel")){
+                                    controller.setLastScannedColor(Color.YELLOW);
+                                }
 
-                                String counter = (String) jsonObj.get("objectCounter");
-//                                int counterInt = Integer.parseInt(counter);
-                                Color kleur = Color.rgb(roodInt, groenInt, blauwInt);
 
-                                controller.setScannedObjectsCounter(counter);
-                                controller.setLastScannedColor(kleur);
+
+
+
+//                                controller.setScannedObjectsCounter(counter);
+//                                controller.setLastScannedColor(kleur);
                             }else if(type.equals("statusRobot1")){
                                 String status = (String) jsonObj.get("status");
                                 if(status.equals("1")){
