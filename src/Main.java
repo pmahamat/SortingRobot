@@ -1,7 +1,4 @@
-import Test.MainController;
-import Test.SamenstelRobot;
-import Test.SorteerRobot;
-import Test.Systeem;
+import Test.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
