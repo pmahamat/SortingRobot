@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -15,8 +17,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <AnchorPane prefHeight="490.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Test.MainController">
    <children>
       <SplitPane dividerPositions="0.5" layoutX="200.0" layoutY="76.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -47,7 +47,7 @@
                               <Circle fx:id="circleStatusBakje5" fill="#ff2121" layoutX="187.0" layoutY="114.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="171.6" AnchorPane.rightAnchor="92.39999999999998" />
                               <Circle fill="DODGERBLUE" layoutX="114.0" layoutY="81.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="83.19999999999999" AnchorPane.leftAnchor="82.6" AnchorPane.rightAnchor="149.39999999999998" AnchorPane.topAnchor="50.0" />
                               <Text fx:id="textStatusBakje1" layoutX="30.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                              <Text layoutX="60.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text fx:id="textStatusBakje2" layoutX="60.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                               <Text fx:id="textStatusBakje3" layoutX="101.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                               <Text fx:id="textStatusBakje4" layoutX="143.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                               <Text fx:id="textStatusBakje5" layoutX="176.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
@@ -57,7 +57,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Text fx:id="scannedObjectsCounter" layoutX="214.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                              <Text fx:id="scannedObjectsCounter" layoutX="215.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="49.99999925494194">
                                  <font>
                                     <Font size="28.0" />
                                  </font>
@@ -94,7 +94,7 @@
                                  </font>
                               </Label>
                               <Button fx:id="verzenden1" layoutX="58.0" layoutY="200.0" mnemonicParsing="false" onAction="#verzend1" prefHeight="26.0" prefWidth="82.0" text="Verzenden" />
-                              <ComboBox fx:id="kleur1" layoutX="61.0" layoutY="56.0" prefWidth="150.0" promptText="Kies een kleur" >
+                              <ComboBox fx:id="kleur1" layoutX="61.0" layoutY="56.0" onAction="#setColor1" prefWidth="150.0" promptText="Kies een kleur">
                                  <items>
                                     <FXCollections fx:factory="observableArrayList">
                                        <String fx:value="Rood" />
@@ -106,7 +106,7 @@
                                     </FXCollections>
                                  </items>
                               </ComboBox>
-                              <ComboBox fx:id="kleur2" layoutX="61.0" layoutY="89.0" prefWidth="150.0" promptText="Kies een kleur" >
+                              <ComboBox fx:id="kleur2" layoutX="61.0" layoutY="89.0" onAction="#setColor2" prefWidth="150.0" promptText="Kies een kleur">
                                  <items>
                                     <FXCollections fx:factory="observableArrayList">
                                        <String fx:value="Rood" />
@@ -118,7 +118,7 @@
                                     </FXCollections>
                                  </items>
                               </ComboBox>
-                              <ComboBox fx:id="kleur3" layoutX="61.0" layoutY="120.0" prefWidth="150.0" promptText="Kies een kleur" >
+                              <ComboBox fx:id="kleur3" layoutX="61.0" layoutY="120.0" onAction="#setColor3" prefWidth="150.0" promptText="Kies een kleur">
                                  <items>
                                     <FXCollections fx:factory="observableArrayList">
                                        <String fx:value="Rood" />
@@ -130,7 +130,7 @@
                                     </FXCollections>
                                  </items>
                               </ComboBox>
-                              <ComboBox fx:id="kleur4" layoutX="61.0" layoutY="152.0" prefWidth="150.0" promptText="Kies een kleur" >
+                              <ComboBox fx:id="kleur4" layoutX="61.0" layoutY="152.0" onAction="#setColor4" prefWidth="150.0" promptText="Kies een kleur">
                                  <items>
                                     <FXCollections fx:factory="observableArrayList">
                                        <String fx:value="Rood" />
