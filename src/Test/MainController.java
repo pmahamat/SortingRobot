@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 
 import javafx.event.ActionEvent;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -279,23 +280,32 @@ public class MainController {
 
     @FXML
     public void verzend1() {
-        serialConnector2.SendMessage(
-                "{\"type\":\"SorteerRobot\"," +
-                        "\"kleur1\":\"" + kleur1.getValue() + "\"," +
-                        "\"kleur2\":\"" + kleur2.getValue() + "\"," +
-                        "\"kleur3\":\"" + kleur3.getValue() + "\"," +
-                        "\"kleur4\":\"" + kleur4.getValue() + "\"}");
+        if(systeem.getSorteerRobot().getOn() == true)
+        {
+            JOptionPane.showMessageDialog(null, "De robot moet uit zijn om te kunnen verzenden.");
+        }else {
+            serialConnector2.SendMessage(
+                    "{\"type\":\"SorteerRobot\"," +
+                            "\"kleur1\":\"" + kleur1.getValue() + "\"," +
+                            "\"kleur2\":\"" + kleur2.getValue() + "\"," +
+                            "\"kleur3\":\"" + kleur3.getValue() + "\"," +
+                            "\"kleur4\":\"" + kleur4.getValue() + "\"}");
+        }
     }
 
     @FXML
     public void verzend2() {
-        serialConnector2.SendMessage(
-                "{\"type\":\"samenstelling\"," +
-                        "\"kleur1\":\"" + aantalKleur1.getValue() + "\"," +
-                        "\"kleur2\":\"" + aantalKleur2.getValue() + "\"," +
-                        "\"kleur3\":\"" + aantalKleur3.getValue() + "\"," +
-                        "\"kleur4\":\"" + aantalKleur4.getValue() + "\"," +
-                        "\"batches\":\"" + aantalBatches.getValue() + "\"}");
+        if(systeem.getSamenstelRobot().getOn() == true){
+            JOptionPane.showMessageDialog(null, "De robot moet uit zijn om te kunnen verzenden.");
+        }else {
+            serialConnector2.SendMessage(
+                    "{\"type\":\"samenstelling\"," +
+                            "\"kleur1\":\"" + aantalKleur1.getValue() + "\"," +
+                            "\"kleur2\":\"" + aantalKleur2.getValue() + "\"," +
+                            "\"kleur3\":\"" + aantalKleur3.getValue() + "\"," +
+                            "\"kleur4\":\"" + aantalKleur4.getValue() + "\"," +
+                            "\"batches\":\"" + aantalBatches.getValue() + "\"}");
+        }
     }
 
     public void setLastScannedColor(Color kleur) {
