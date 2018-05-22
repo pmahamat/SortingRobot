@@ -102,7 +102,7 @@ public class Database {
                 logID = rs.getInt("LogID");
             }
             logID++;
-            insertLog("Log robot is aangemaakt ",1);
+            insertLog("Log robot is aangemaakt ",3);
             String insertString = "insert into robot1log(bak1,bak2,bak3,bak4,LogID) values (?,?,?,?,"+ logID +")" ;
             conn.setAutoCommit(false);
             insert = conn.prepareStatement(insertString);
@@ -110,6 +110,7 @@ public class Database {
             insert.setInt(2,Bak2);
             insert.setInt(3,Bak3);
             insert.setInt(4,Bak4);
+
             insert.executeUpdate();
             conn.commit();
             insert.close();
@@ -119,7 +120,7 @@ public class Database {
     }
 
 
-    public void insertSamenstelling(String naam, int Bak1, int Bak2, int Bak3, int Bak4){
+    public void insertSamenstelling(String naam, int Bak1, int Bak2, int Bak3, int Bak4,String Kleur1,String Kleur2,String Kleur3,String Kleur4){
         try (
                 // Step 1: Allocate a database 'Connection' object
                 Connection conn = DriverManager.getConnection(
@@ -133,8 +134,8 @@ public class Database {
                 logID = rs.getInt("LogID");
             }
             logID++;
-            insertLog("samenstelling " + naam + " is aangemaakt ",1);
-            String insertString = "insert into samenstelling(naam,bak1,bak2,bak3,bak4,LogID) values (?,?,?,?,?,"+ logID + ")" ;
+            insertLog("samenstelling " + naam + " is aangemaakt ",3);
+            String insertString = "insert into samenstelling(naam,bak1,bak2,bak3,bak4,LogID,Kleur1,Kleur2,Kleur3,Kleur4) values (?,?,?,?,?,"+ logID + ",?,?,?,?)" ;
             conn.setAutoCommit(false);
             insert = conn.prepareStatement(insertString);
             insert.setString(1,naam);
@@ -142,6 +143,10 @@ public class Database {
             insert.setInt(3,Bak2);
             insert.setInt(4,Bak3);
             insert.setInt(5,Bak4);
+            insert.setString(6,Kleur1);
+            insert.setString(7,Kleur2);
+            insert.setString(8,Kleur3);
+            insert.setString(9,Kleur4);
             insert.executeUpdate();
             conn.commit();
             insert.close();
@@ -169,6 +174,32 @@ public class Database {
                 waardeBakken.add(bak3);
                 waardeBakken.add(bak4);
                 return waardeBakken;
+            }
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    public ArrayList<String> SelectSamenstellingKleuren(String naam){
+        try (
+                // Step 1: Allocate a database 'Connection' object
+                Connection conn = DriverManager.getConnection(
+                        "jdbc:mysql://den1.mysql2.gear.host:3306/kbs?useSSL=false", "kbs", "Zn7OG-6fJ!4M");
+                // MySQL: "jdbc:mysql://hostname:port/databaseName", "username", "password"
+        ) {
+            ArrayList<String> Kleuren = new ArrayList<>();
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery("Select * from samenstelling where naam = '" + naam +"'");
+            while (rs.next()) {
+                String Kleur1 = rs.getString("Kleur1");
+                String Kleur2 = rs.getString("Kleur2");
+                String Kleur3 = rs.getString("Kleur3");
+                String Kleur4 = rs.getString("Kleur4");
+                Kleuren.add(Kleur1);
+                Kleuren.add(Kleur2);
+                Kleuren.add(Kleur3);
+                Kleuren.add(Kleur4);
+                return Kleuren;
             }
         } catch(SQLException ex) {
             ex.printStackTrace();

@@ -246,7 +246,7 @@ public class MainController {
             int kleur2aantal = aantalKleur2.getValue();
             int kleur3aantal = aantalKleur3.getValue();
             int kleur4aantal = aantalKleur4.getValue();
-            database.insertSamenstelling(opslaanText.getText(), kleur1aantal, kleur2aantal, kleur3aantal, kleur4aantal);
+            database.insertSamenstelling(opslaanText.getText(), kleur1aantal, kleur2aantal, kleur3aantal, kleur4aantal,kleur1.getValue().toString(),kleur2.getValue().toString(),kleur3.getValue().toString(),kleur4.getValue().toString());
             samenstellingen.getItems().addAll(opslaanText.getText());
         }
     }
@@ -254,12 +254,19 @@ public class MainController {
     @FXML
     public void getSamenstellingen() {
         ArrayList<Integer> waardeBakken;
+        ArrayList<String> kleuren;
         waardeBakken = database.SelectSamenstelling(samenstellingen.getValue().toString());
+        kleuren = database.SelectSamenstellingKleuren(samenstellingen.getValue().toString());
         aantalKleur1.getValueFactory().setValue(waardeBakken.get(0));
         aantalKleur2.getValueFactory().setValue(waardeBakken.get(1));
         aantalKleur3.getValueFactory().setValue(waardeBakken.get(2));
         aantalKleur4.getValueFactory().setValue(waardeBakken.get(3));
+        kleur1.setValue(kleuren.get(0));
+        kleur2.setValue(kleuren.get(1));
+        kleur3.setValue(kleuren.get(2));
+        kleur4.setValue(kleuren.get(3));
     }
+
 
     @FXML
     public void openLog1() {
@@ -269,7 +276,12 @@ public class MainController {
 
     @FXML
     public void verzend1() {
-
+        serialConnector2.SendMessage(
+                "{\"type\":\"SorteerRobot\"," +
+                        "\"kleur1\":\"" + kleur1.getValue() + "\"," +
+                        "\"kleur2\":\"" + kleur2.getValue() + "\"," +
+                        "\"kleur3\":\"" + kleur3.getValue() + "\"," +
+                        "\"kleur4\":\"" + kleur4.getValue() + "\"}");
     }
 
     @FXML
