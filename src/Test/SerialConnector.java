@@ -68,7 +68,12 @@ public class SerialConnector {
 //                            int typeInt = (int) Integer.parseInt(type);
                             System.out.println(jsonObj.toJSONString());
                             if(type.equals("robot1")){
-                                System.out.println("last scanned");
+                                //Counter
+                                Long counter = (Long) jsonObj.get("counter");
+                                System.out.println(counter);
+                                controller.setScannedObjectsCounter(counter);
+
+                                //kleur
                                 String kleur = (String) jsonObj.get("kleur");
                                 if(kleur.equals("rood")){
                                     controller.setLastScannedColor(Color.RED);
@@ -84,12 +89,25 @@ public class SerialConnector {
                                     controller.setLastScannedColor(Color.YELLOW);
                                 }
 
-
-
-
-
-//                                controller.setScannedObjectsCounter(counter);
-//                                controller.setLastScannedColor(kleur);
+                                //Arm
+                                Long bakje = (Long) jsonObj.get("bakje");
+                                switch (bakje.intValue()) {
+                                    case 1:
+                                        controller.setTextStatusBakje1("*");
+                                        break;
+                                    case 2:
+                                        controller.setTextStatusBakje2("*");
+                                        break;
+                                    case 3:
+                                        controller.setTextStatusBakje3("*");
+                                        break;
+                                    case 4:
+                                        controller.setTextStatusBakje4("*");
+                                        break;
+                                    case 5:
+                                        controller.setTextStatusBakje5("*");
+                                        break;
+                                }
                             }else if(type.equals("statusRobot1")){
                                 String status = (String) jsonObj.get("status");
                                 if(status.equals("1")){
