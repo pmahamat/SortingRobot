@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 
 import static HMI.SorteerRobot.setKleur1;
 
@@ -296,11 +297,23 @@ public class MainController {
         kleuren.add(kleur2);
         kleuren.add(kleur3);
         kleuren.add(kleur4);
-
+        HashSet<String> set = new HashSet<>();
+        ArrayList<String> kleurenString = new ArrayList<>();
+        kleurenString.add(kleur1.getValue().toString());
+        kleurenString.add(kleur2.getValue().toString());
+        kleurenString.add(kleur3.getValue().toString());
+        kleurenString.add(kleur4.getValue().toString());
+        ArrayList<String> check = new ArrayList<>();
         for (ComboBox kleur : kleuren) {
             if (kleur.getValue() == null) {
                 hasValues = false;
                 break;
+            }
+        }
+        for(String string: kleurenString){
+            if (!set.contains(string)) {
+                check.add(string);
+                set.add(string);
             }
         }
 
@@ -308,6 +321,8 @@ public class MainController {
             JOptionPane.showMessageDialog(null, "De robot moet uit zijn om te kunnen verzenden.");
         } else if (!hasValues) {
             JOptionPane.showMessageDialog(null, "Elke kleur moet een waarde hebben");
+        } else if(check.size() < 4){
+            JOptionPane.showMessageDialog(null, "Een kleur mag maar een keer voorkomen");
         } else {
             serialConnector2.SendMessage(
                     "{\"type\":\"SorteerRobot\"," +
