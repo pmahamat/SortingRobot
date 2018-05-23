@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 //import Test.SchermHMI;
 
 public class Main extends Application {
-    private MainController controller;
 
     public static void main(String[] args) {
         launch(args);
@@ -24,7 +23,6 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Test/HMI.fxml"));
         Parent root = loader.load();
         MainController controller = loader.getController();
-        this.controller = loader.getController();
         controller.setSysteem(systeem);
 
         primaryStage.setTitle("HMI");
