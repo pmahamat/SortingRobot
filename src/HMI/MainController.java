@@ -1,7 +1,5 @@
-package Test;
+package HMI;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,11 +9,9 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-import javafx.event.ActionEvent;
-
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import static Test.SorteerRobot.setKleur1;
 
@@ -94,19 +90,19 @@ public class MainController {
     private ComboBox kleur4;
 
     @FXML
-    private Label statusRobot2Bakje1;
+    public Label statusRobot2Bakje1;
 
     @FXML
-    private Label statusRobot2Bakje2;
+    public Label statusRobot2Bakje2;
 
     @FXML
-    private Label statusRobot2Bakje3;
+    public Label statusRobot2Bakje3;
 
     @FXML
-    private Label statusRobot2Bakje4;
+    public Label statusRobot2Bakje4;
 
     @FXML
-    private Label statusRobot2Batch;
+    public Label statusRobot2Batch;
 
     @FXML
     private Spinner<Integer> aantalKleur1;
@@ -314,7 +310,7 @@ public class MainController {
             int kleur2aantal = aantalKleur2.getValue();
             int kleur3aantal = aantalKleur3.getValue();
             int kleur4aantal = aantalKleur4.getValue();
-            database.insertSamenstelling(opslaanText.getText(), kleur1aantal, kleur2aantal, kleur3aantal, kleur4aantal,kleur1.getValue().toString(),kleur2.getValue().toString(),kleur3.getValue().toString(),kleur4.getValue().toString());
+            database.insertSamenstelling(opslaanText.getText(), kleur1aantal, kleur2aantal, kleur3aantal, kleur4aantal, kleur1.getValue().toString(), kleur2.getValue().toString(), kleur3.getValue().toString(), kleur4.getValue().toString());
             samenstellingen.getItems().addAll(opslaanText.getText());
         }
     }
@@ -344,23 +340,54 @@ public class MainController {
 
     @FXML
     public void verzend1() {
-        serialConnector2.SendMessage(
-                "{\"type\":\"SorteerRobot\"," +
-                        "\"kleur1\":\"" + kleur1.getValue() + "\"," +
-                        "\"kleur2\":\"" + kleur2.getValue() + "\"," +
-                        "\"kleur3\":\"" + kleur3.getValue() + "\"," +
-                        "\"kleur4\":\"" + kleur4.getValue() + "\"}");
+        boolean hasValues = true;
+
+        ArrayList<ComboBox> kleuren = new ArrayList<ComboBox>();
+        kleuren.add(kleur1);
+        kleuren.add(kleur2);
+        kleuren.add(kleur3);
+        kleuren.add(kleur4);
+
+        for (ComboBox kleur:kleuren) {
+            if (kleur.getValue() == null){
+                hasValues = false;
+                break;
+            }
+        }
+
+        if(systeem.getSorteerRobot().getOn() == true)
+        {
+            JOptionPane.showMessageDialog(null, "De robot moet uit zijn om te kunnen verzenden.");
+        } else if(!hasValues){
+            JOptionPane.showMessageDialog(null, "Elke kleur moet een waarde hebben");
+        } else {
+            serialConnector2.SendMessage(
+                    "{\"type\":\"SorteerRobot\"," +
+                            "\"kleur1\":\"" + kleur1.getValue() + "\"," +
+                            "\"kleur2\":\"" + kleur2.getValue() + "\"," +
+                            "\"kleur3\":\"" + kleur3.getValue() + "\"," +
+                            "\"kleur4\":\"" + kleur4.getValue() + "\"}");
+            Logger.Log("Kleuren verzonden: " + kleur1.getValue() + ", " + kleur2.getValue() + ", "
+                    + kleur3.getValue() + ", " + kleur4.getValue(), 3);
+            JOptionPane.showMessageDialog(null, "Kleuren verzonden.");
+        }
     }
 
     @FXML
     public void verzend2() {
-        serialConnector2.SendMessage(
-                "{\"type\":\"samenstelling\"," +
-                        "\"kleur1\":\"" + aantalKleur1.getValue() + "\"," +
-                        "\"kleur2\":\"" + aantalKleur2.getValue() + "\"," +
-                        "\"kleur3\":\"" + aantalKleur3.getValue() + "\"," +
-                        "\"kleur4\":\"" + aantalKleur4.getValue() + "\"," +
-                        "\"batches\":\"" + aantalBatches.getValue() + "\"}");
+        if(systeem.getSamenstelRobot().getOn() == true){
+            JOptionPane.showMessageDialog(null, "De robot moet uit zijn om te kunnen verzenden.");
+        }else {
+            serialConnector2.SendMessage(
+                    "{\"type\":\"samenstelling\"," +
+                            "\"kleur1\":\"" + aantalKleur1.getValue() + "\"," +
+                            "\"kleur2\":\"" + aantalKleur2.getValue() + "\"," +
+                            "\"kleur3\":\"" + aantalKleur3.getValue() + "\"," +
+                            "\"kleur4\":\"" + aantalKleur4.getValue() + "\"," +
+                            "\"batches\":\"" + aantalBatches.getValue() + "\"}");
+            Logger.Log("Aantallen verzonden: "+ aantalKleur1.getValue() + "->kleur1, " + aantalKleur2.getValue() + "->kleur2, "
+                    + aantalKleur3.getValue() + "->kleur3, " + aantalKleur4.getValue() + "->kleur4, " + aantalBatches.getValue() + "->batches", 3);
+        }
     }
 
     public void setLastScannedColor(Color kleur) {
@@ -441,12 +468,6 @@ public class MainController {
 
     public void setStatusRobot2Batch(Label statusRobot2Batch) {
         this.statusRobot2Batch = statusRobot2Batch;
-    }
-
-    public void setArmBakje(int bakje){
-        for(int i=5; i>0;i--){
-
-        }
     }
 
     private void clearBakjes(){

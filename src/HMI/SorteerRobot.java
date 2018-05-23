@@ -1,8 +1,10 @@
-package Test;
+package HMI;
 
 import java.awt.*;
 
-public class SorteerRobot extends Robot {
+
+//Defining sorting robot by extending it from robot
+public class SorteerRobot extends HMI.Robot {
 
     private int standArm;
     private static Color kleur1 = Color.blue;
@@ -45,6 +47,7 @@ public class SorteerRobot extends Robot {
         this.standArm = standArm;
     }
 
+    //Sets color for the first color
     public void setKleur1(javafx.scene.paint.Color kleur1) {
         javafx.scene.paint.Color fx = kleur1;
         java.awt.Color awtColor = new java.awt.Color((float) fx.getRed(),
@@ -54,6 +57,7 @@ public class SorteerRobot extends Robot {
         SorteerRobot.kleur1 = awtColor;
     }
 
+    //Sets color for the second color
     public void setKleur2(javafx.scene.paint.Color kleur2) {
         javafx.scene.paint.Color fx = kleur2;
         java.awt.Color awtColor = new java.awt.Color((float) fx.getRed(),
@@ -63,6 +67,7 @@ public class SorteerRobot extends Robot {
         SorteerRobot.kleur2 = awtColor;
     }
 
+    //Sets color for the third color
     public void setKleur3(javafx.scene.paint.Color kleur3) {
         javafx.scene.paint.Color fx = kleur3;
         java.awt.Color awtColor = new java.awt.Color((float) fx.getRed(),
@@ -72,6 +77,7 @@ public class SorteerRobot extends Robot {
         SorteerRobot.kleur3 = awtColor;
     }
 
+    //Sets color for the fourth color
     public void setKleur4(javafx.scene.paint.Color kleur4) {
         javafx.scene.paint.Color fx = kleur4;
         java.awt.Color awtColor = new java.awt.Color((float) fx.getRed(),
@@ -89,7 +95,7 @@ public class SorteerRobot extends Robot {
         SorteerRobot.objectCounter = objectCounter;
     }
 
-    public SorteerRobot(String naam){
+    public SorteerRobot(String naam) {
         super(naam);
     }
 

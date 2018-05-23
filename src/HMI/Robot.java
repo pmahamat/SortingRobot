@@ -1,4 +1,4 @@
-package Test;
+package HMI;
 
 public class Robot {
     private String naam;
@@ -8,11 +8,11 @@ public class Robot {
         isOn = on;
     }
 
-    public Robot(String naam){
+    public Robot(String naam) {
         this.naam = naam;
     }
 
-    public void switchPower(){
+    public void switchPower() {
         isOn = !isOn;
     }
 

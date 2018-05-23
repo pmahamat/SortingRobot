@@ -1,19 +1,17 @@
-package Test;
+package HMI;
 
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;
 import com.fazecast.jSerialComm.SerialPortEvent;
-import com.mysql.cj.xdevapi.JsonString;
+import javafx.application.Platform;
 import javafx.scene.paint.Color;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import javafx.scene.paint.*;
-
-import java.awt.*;
 
 public class SerialConnector {
+
+    //Defining vars
     String test = "";
     String Stringaf = "";
     private static SerialPort[] serialPorts = SerialPort.getCommPorts();
@@ -22,7 +20,10 @@ public class SerialConnector {
     MainController controller;
 
     SerialConnector(int port, MainController controller) {
+
+        //Try catch for when arduino is not connected
         try {
+            //Setting up serial connection
             this.controller = controller;
             arduino = serialPorts[port - 1];
 
@@ -31,6 +32,7 @@ public class SerialConnector {
 
             arduino.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 100, 0);
 
+            //Adding serial listener to do things when it receives a package
             arduino.addDataListener(new SerialPortDataListener() {
                 @Override
                 public int getListeningEvents() {
@@ -134,6 +136,23 @@ public class SerialConnector {
                                     controller.statusRobot2.setFill(Color.RED);
                                     controller.getSysteem().getSamenstelRobot().setOn(false);
                                 }
+                            } else if (type.equals("Robot2")) {
+                                String statusbak1 = (String) jsonObj.get("statusbak1");
+                                String statusbak2 = (String) jsonObj.get("statusbak2");
+                                String statusbak3 = (String) jsonObj.get("statusbak3");
+                                String statusbak4 = (String) jsonObj.get("statusbak4");
+                                String statusbatch = (String) jsonObj.get("statusbatch");
+                                Platform.runLater(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        controller.statusRobot2Bakje1.setText(statusbak1);
+                                        controller.statusRobot2Bakje2.setText(statusbak2);
+                                        controller.statusRobot2Bakje3.setText(statusbak3);
+                                        controller.statusRobot2Bakje4.setText(statusbak4);
+                                        controller.statusRobot2Batch.setText(statusbatch);
+                                    }
+                                });
+
                             }
                         } catch (ParseException e) {
                             e.printStackTrace();
@@ -152,6 +171,8 @@ public class SerialConnector {
 
     }
 
+
+    //Class for writing strings to the serial device
     public void SendMessage(String s) {
         try {
             byte[] buffer = s.getBytes();
