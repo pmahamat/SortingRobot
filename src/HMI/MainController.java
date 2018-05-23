@@ -13,7 +13,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static Test.SorteerRobot.setKleur1;
+import static HMI.SorteerRobot.setKleur1;
 
 public class MainController {
 
@@ -153,114 +153,63 @@ public class MainController {
 
     }
 
-    @FXML
-    void setColor1(ActionEvent event) {
-
-        String kleur = kleur1.getValue().toString();
-        switch (kleur) {
-
-            case "Rood":
-                cirlceStatusBakje1.setFill(Color.RED);
+    public void setColor(int i, Circle circle) {
+        String kleur = null;
+        switch (i) {
+            case 1:
+                kleur = kleur1.getValue().toString();
                 break;
-            case "Groen":
-                cirlceStatusBakje1.setFill(Color.GREEN);
+            case 2:
+                kleur = kleur2.getValue().toString();
                 break;
-            case "Blauw":
-                cirlceStatusBakje1.setFill(Color.DODGERBLUE);
+            case 3:
+                kleur = kleur3.getValue().toString();
                 break;
-            case "Paars":
-                cirlceStatusBakje1.setFill(Color.PURPLE);
-                break;
-            case "Oranje":
-                cirlceStatusBakje1.setFill(Color.ORANGE);
-                break;
-            case "Geel":
-                cirlceStatusBakje1.setFill(Color.YELLOW);
+            case 4:
+                kleur = kleur4.getValue().toString();
                 break;
 
         }
+        switch (kleur) {
+            case "Rood":
+                circle.setFill(Color.RED);
+                break;
+            case "Groen":
+                circle.setFill(Color.GREEN);
+                break;
+            case "Blauw":
+                circle.setFill(Color.DODGERBLUE);
+                break;
+            case "Paars":
+                circle.setFill(Color.PURPLE);
+                break;
+            case "Oranje":
+                circle.setFill(Color.ORANGE);
+                break;
+            case "Geel":
+                circle.setFill(Color.YELLOW);
+                break;
+        }
+    }
+
+    @FXML
+    void setColor1(ActionEvent event) {
+        setColor(1, cirlceStatusBakje1);
     }
 
     @FXML
     void setColor2(ActionEvent event) {
-
-        String kleur = kleur2.getValue().toString();
-        switch (kleur) {
-
-            case "Rood":
-                circleStatusBakje2.setFill(Color.RED);
-                break;
-            case "Groen":
-                circleStatusBakje2.setFill(Color.GREEN);
-                break;
-            case "Blauw":
-                circleStatusBakje2.setFill(Color.DODGERBLUE);
-                break;
-            case "Paars":
-                circleStatusBakje2.setFill(Color.PURPLE);
-                break;
-            case "Oranje":
-                circleStatusBakje2.setFill(Color.ORANGE);
-                break;
-            case "Geel":
-                circleStatusBakje2.setFill(Color.YELLOW);
-                break;
-
-        }
+        setColor(2, circleStatusBakje2);
     }
 
     @FXML
     void setColor3(ActionEvent event) {
-        String kleur = kleur3.getValue().toString();
-        switch (kleur) {
-
-            case "Rood":
-                circleStatusBakje3.setFill(Color.RED);
-                break;
-            case "Groen":
-                circleStatusBakje3.setFill(Color.GREEN);
-                break;
-            case "Blauw":
-                circleStatusBakje3.setFill(Color.DODGERBLUE);
-                break;
-            case "Paars":
-                circleStatusBakje3.setFill(Color.PURPLE);
-                break;
-            case "Oranje":
-                circleStatusBakje3.setFill(Color.ORANGE);
-                break;
-            case "Geel":
-                circleStatusBakje3.setFill(Color.YELLOW);
-                break;
-
-        }
+        setColor(3, circleStatusBakje3);
     }
 
     @FXML
     void setColor4(ActionEvent event) {
-        String kleur = kleur4.getValue().toString();
-        switch (kleur) {
-
-            case "Rood":
-                circleStatusBakje4.setFill(Color.RED);
-                break;
-            case "Groen":
-                circleStatusBakje4.setFill(Color.GREEN);
-                break;
-            case "Blauw":
-                circleStatusBakje4.setFill(Color.DODGERBLUE);
-                break;
-            case "Paars":
-                circleStatusBakje4.setFill(Color.PURPLE);
-                break;
-            case "Oranje":
-                circleStatusBakje4.setFill(Color.ORANGE);
-                break;
-            case "Geel":
-                circleStatusBakje4.setFill(Color.YELLOW);
-                break;
-
-        }
+        setColor(4, circleStatusBakje4);
     }
 
     public void setStatusRobot1() {
@@ -348,17 +297,16 @@ public class MainController {
         kleuren.add(kleur3);
         kleuren.add(kleur4);
 
-        for (ComboBox kleur:kleuren) {
-            if (kleur.getValue() == null){
+        for (ComboBox kleur : kleuren) {
+            if (kleur.getValue() == null) {
                 hasValues = false;
                 break;
             }
         }
 
-        if(systeem.getSorteerRobot().getOn() == true)
-        {
+        if (systeem.getSorteerRobot().getOn() == true) {
             JOptionPane.showMessageDialog(null, "De robot moet uit zijn om te kunnen verzenden.");
-        } else if(!hasValues){
+        } else if (!hasValues) {
             JOptionPane.showMessageDialog(null, "Elke kleur moet een waarde hebben");
         } else {
             serialConnector2.SendMessage(
@@ -375,9 +323,9 @@ public class MainController {
 
     @FXML
     public void verzend2() {
-        if(systeem.getSamenstelRobot().getOn() == true){
+        if (systeem.getSamenstelRobot().getOn() == true) {
             JOptionPane.showMessageDialog(null, "De robot moet uit zijn om te kunnen verzenden.");
-        }else {
+        } else {
             serialConnector2.SendMessage(
                     "{\"type\":\"samenstelling\"," +
                             "\"kleur1\":\"" + aantalKleur1.getValue() + "\"," +
@@ -385,7 +333,7 @@ public class MainController {
                             "\"kleur3\":\"" + aantalKleur3.getValue() + "\"," +
                             "\"kleur4\":\"" + aantalKleur4.getValue() + "\"," +
                             "\"batches\":\"" + aantalBatches.getValue() + "\"}");
-            Logger.Log("Aantallen verzonden: "+ aantalKleur1.getValue() + "->kleur1, " + aantalKleur2.getValue() + "->kleur2, "
+            Logger.Log("Aantallen verzonden: " + aantalKleur1.getValue() + "->kleur1, " + aantalKleur2.getValue() + "->kleur2, "
                     + aantalKleur3.getValue() + "->kleur3, " + aantalKleur4.getValue() + "->kleur4, " + aantalBatches.getValue() + "->batches", 3);
         }
     }
@@ -427,14 +375,17 @@ public class MainController {
         clearBakjes();
         this.textStatusBakje2.setText(textStatusBakje2);
     }
+
     public void setTextStatusBakje3(String textStatusBakje3) {
         clearBakjes();
         this.textStatusBakje3.setText(textStatusBakje3);
     }
+
     public void setTextStatusBakje4(String textStatusBakje4) {
         clearBakjes();
         this.textStatusBakje4.setText(textStatusBakje4);
     }
+
     public void setTextStatusBakje5(String textStatusBakje5) {
         clearBakjes();
         this.textStatusBakje5.setText(textStatusBakje5);
@@ -470,7 +421,7 @@ public class MainController {
         this.statusRobot2Batch = statusRobot2Batch;
     }
 
-    private void clearBakjes(){
+    private void clearBakjes() {
         textStatusBakje1.setText("-");
         textStatusBakje2.setText("-");
         textStatusBakje3.setText("-");
