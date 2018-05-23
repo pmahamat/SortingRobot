@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.ProgressBarTableCell;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -280,16 +281,36 @@ public class MainController {
 
     @FXML
     public void verzend1() {
+        boolean hasValues = true;
+
+        ArrayList<ComboBox> kleuren = new ArrayList<ComboBox>();
+        kleuren.add(kleur1);
+        kleuren.add(kleur2);
+        kleuren.add(kleur3);
+        kleuren.add(kleur4);
+
+        for (ComboBox kleur:kleuren) {
+            if (kleur.getValue() == null){
+                hasValues = false;
+                break;
+            }
+        }
+
         if(systeem.getSorteerRobot().getOn() == true)
         {
             JOptionPane.showMessageDialog(null, "De robot moet uit zijn om te kunnen verzenden.");
-        }else {
+        } else if(!hasValues){
+            JOptionPane.showMessageDialog(null, "Elke kleur moet een waarde hebben");
+        } else {
             serialConnector2.SendMessage(
                     "{\"type\":\"SorteerRobot\"," +
                             "\"kleur1\":\"" + kleur1.getValue() + "\"," +
                             "\"kleur2\":\"" + kleur2.getValue() + "\"," +
                             "\"kleur3\":\"" + kleur3.getValue() + "\"," +
                             "\"kleur4\":\"" + kleur4.getValue() + "\"}");
+            Logger.Log("Kleuren verzonden: " + kleur1.getValue() + ", " + kleur2.getValue() + ", "
+                    + kleur3.getValue() + ", " + kleur4.getValue(), 3);
+            JOptionPane.showMessageDialog(null, "Kleuren verzonden.");
         }
     }
 
@@ -305,6 +326,8 @@ public class MainController {
                             "\"kleur3\":\"" + aantalKleur3.getValue() + "\"," +
                             "\"kleur4\":\"" + aantalKleur4.getValue() + "\"," +
                             "\"batches\":\"" + aantalBatches.getValue() + "\"}");
+            Logger.Log("Aantallen verzonden: "+ aantalKleur1.getValue() + "->kleur1, " + aantalKleur2.getValue() + "->kleur2, "
+                    + aantalKleur3.getValue() + "->kleur3, " + aantalKleur4.getValue() + "->kleur4, " + aantalBatches.getValue() + "->batches", 3);
         }
     }
 
@@ -386,12 +409,6 @@ public class MainController {
 
     public void setStatusRobot2Batch(Label statusRobot2Batch) {
         this.statusRobot2Batch = statusRobot2Batch;
-    }
-
-    public void setArmBakje(int bakje){
-        for(int i=5; i>0;i--){
-
-        }
     }
 
     private void clearBakjes(){
