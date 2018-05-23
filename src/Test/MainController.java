@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static Test.SorteerRobot.setKleur1;
+
 public class MainController {
 
     private Database database = new Database();
@@ -157,50 +159,112 @@ public class MainController {
 
     @FXML
     void setColor1(ActionEvent event) {
-//        systeem.getSorteerRobot().setKleur1(kleur1.getValue());
 
-        serialConnector1.SendMessage("{\n" +
-                "\"type\": \"kleur1\",\n" +
-                "\"red\":\"" + SorteerRobot.getKleur1().getRed() + "\",\n" +
-                "\"green\" : \"" + SorteerRobot.getKleur1().getGreen() + "\",\n" +
-                "\"blue\": \"" + SorteerRobot.getKleur1().getBlue() + "\"\n" +
-                "}");
+        String kleur = kleur1.getValue().toString();
+        switch (kleur) {
+
+            case "Rood":
+                cirlceStatusBakje1.setFill(Color.RED);
+                break;
+            case "Groen":
+                cirlceStatusBakje1.setFill(Color.GREEN);
+                break;
+            case "Blauw":
+                cirlceStatusBakje1.setFill(Color.DODGERBLUE);
+                break;
+            case "Paars":
+                cirlceStatusBakje1.setFill(Color.PURPLE);
+                break;
+            case "Oranje":
+                cirlceStatusBakje1.setFill(Color.ORANGE);
+                break;
+            case "Geel":
+                cirlceStatusBakje1.setFill(Color.YELLOW);
+                break;
+
+        }
     }
 
     @FXML
     void setColor2(ActionEvent event) {
-//        systeem.getSorteerRobot().setKleur2(kleur2.getValue());
 
-        serialConnector1.SendMessage("{\n" +
-                "\"type\": \"kleur2\",\n" +
-                "\"red\":\"" + SorteerRobot.getKleur2().getRed() + "\",\n" +
-                "\"green\" : \"" + SorteerRobot.getKleur2().getGreen() + "\",\n" +
-                "\"blue\": \"" + SorteerRobot.getKleur2().getBlue() + "\"\n" +
-                "}");
+        String kleur = kleur2.getValue().toString();
+        switch (kleur) {
+
+            case "Rood":
+                circleStatusBakje2.setFill(Color.RED);
+                break;
+            case "Groen":
+                circleStatusBakje2.setFill(Color.GREEN);
+                break;
+            case "Blauw":
+                circleStatusBakje2.setFill(Color.DODGERBLUE);
+                break;
+            case "Paars":
+                circleStatusBakje2.setFill(Color.PURPLE);
+                break;
+            case "Oranje":
+                circleStatusBakje2.setFill(Color.ORANGE);
+                break;
+            case "Geel":
+                circleStatusBakje2.setFill(Color.YELLOW);
+                break;
+
+        }
     }
 
     @FXML
     void setColor3(ActionEvent event) {
-//        systeem.getSorteerRobot().setKleur3(kleur3.getValue());
+        String kleur = kleur3.getValue().toString();
+        switch (kleur) {
 
-        serialConnector1.SendMessage("{\n" +
-                "\"type\": \"kleur3\",\n" +
-                "\"red\":\"" + SorteerRobot.getKleur3().getRed() + "\",\n" +
-                "\"green\" : \"" + SorteerRobot.getKleur3().getGreen() + "\",\n" +
-                "\"blue\": \"" + SorteerRobot.getKleur3().getBlue() + "\"\n" +
-                "}");
+            case "Rood":
+                circleStatusBakje3.setFill(Color.RED);
+                break;
+            case "Groen":
+                circleStatusBakje3.setFill(Color.GREEN);
+                break;
+            case "Blauw":
+                circleStatusBakje3.setFill(Color.DODGERBLUE);
+                break;
+            case "Paars":
+                circleStatusBakje3.setFill(Color.PURPLE);
+                break;
+            case "Oranje":
+                circleStatusBakje3.setFill(Color.ORANGE);
+                break;
+            case "Geel":
+                circleStatusBakje3.setFill(Color.YELLOW);
+                break;
+
+        }
     }
 
     @FXML
     void setColor4(ActionEvent event) {
-//        systeem.getSorteerRobot().setKleur4(kleur4.getValue());
+        String kleur = kleur4.getValue().toString();
+        switch (kleur) {
 
-        serialConnector1.SendMessage("{\n" +
-                "\"type\": \"kleur4\",\n" +
-                "\"red\":\"" + SorteerRobot.getKleur4().getRed() + "\",\n" +
-                "\"green\" : \"" + SorteerRobot.getKleur4().getGreen() + "\",\n" +
-                "\"blue\": \"" + SorteerRobot.getKleur4().getBlue() + "\"\n" +
-                "}");
+            case "Rood":
+                circleStatusBakje4.setFill(Color.RED);
+                break;
+            case "Groen":
+                circleStatusBakje4.setFill(Color.GREEN);
+                break;
+            case "Blauw":
+                circleStatusBakje4.setFill(Color.DODGERBLUE);
+                break;
+            case "Paars":
+                circleStatusBakje4.setFill(Color.PURPLE);
+                break;
+            case "Oranje":
+                circleStatusBakje4.setFill(Color.ORANGE);
+                break;
+            case "Geel":
+                circleStatusBakje4.setFill(Color.YELLOW);
+                break;
+
+        }
     }
 
     public void setStatusRobot1() {
@@ -210,6 +274,7 @@ public class MainController {
             statusRobot1.setFill(Color.RED);
         }
     }
+
 
     @FXML
     public void startRobot2(javafx.event.ActionEvent actionEvent) {
@@ -302,7 +367,7 @@ public class MainController {
         lastScannedColor.setFill(kleur);
     }
 
-    public void setCirlceStatusBakje1(Circle cirlceStatusBakje1) {
+    public void setCirlceStatusBakjez1(Circle cirlceStatusBakje1) {
         this.cirlceStatusBakje1 = cirlceStatusBakje1;
     }
 

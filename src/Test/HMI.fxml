@@ -40,10 +40,10 @@
                               </Label>
                               <Rectangle fx:id="lastScannedColor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="46.0" layoutX="215.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eaeaea" height="138.0" layoutX="19.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="191.0" AnchorPane.bottomAnchor="14.199999999999989" AnchorPane.leftAnchor="18.80000000000001" AnchorPane.rightAnchor="84.39999999999998" AnchorPane.topAnchor="43.0" />
-                              <Circle fx:id="cirlceStatusBakje1" fill="#1fff36" layoutX="41.0" layoutY="115.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Circle fx:id="circleStatusBakje2" fill="#1fff36" layoutX="71.0" layoutY="142.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Circle fx:id="circleStatusBakje3" fill="#1fff36" layoutX="112.0" layoutY="158.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Circle fx:id="circleStatusBakje4" fill="#1fff36" layoutX="154.0" layoutY="141.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="cirlceStatusBakje1" fill="#fff" layoutX="41.0" layoutY="115.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="circleStatusBakje2" fill="#fff" layoutX="71.0" layoutY="142.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="circleStatusBakje3" fill="#fff" layoutX="112.0" layoutY="158.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fx:id="circleStatusBakje4" fill="#fff" layoutX="154.0" layoutY="141.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
                               <Circle fx:id="circleStatusBakje5" fill="#ff2121" layoutX="187.0" layoutY="114.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="171.6" AnchorPane.rightAnchor="92.39999999999998" />
                               <Circle fill="DODGERBLUE" layoutX="114.0" layoutY="81.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="83.19999999999999" AnchorPane.leftAnchor="82.6" AnchorPane.rightAnchor="149.39999999999998" AnchorPane.topAnchor="50.0" />
                               <Text fx:id="textStatusBakje1" layoutX="20.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="41.999995708465576" />
