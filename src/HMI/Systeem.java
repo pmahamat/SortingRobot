@@ -1,4 +1,4 @@
-package Test;
+package HMI;
 
 //Class to combine multiple robots for easy access
 public class Systeem {

@@ -1,10 +1,10 @@
-package Test;
+package HMI;
 
 import java.awt.*;
 
 
 //Defining sorting robot by extending it from robot
-public class SorteerRobot extends Robot {
+public class SorteerRobot extends HMI.Robot {
 
     private int standArm;
     private static Color kleur1 = Color.blue;

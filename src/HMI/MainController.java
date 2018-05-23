@@ -1,23 +1,17 @@
-package Test;
+package HMI;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ProgressBarTableCell;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-import javafx.event.ActionEvent;
-
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class MainController {
 

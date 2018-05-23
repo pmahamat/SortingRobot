@@ -1,4 +1,4 @@
-package Test;
+package HMI;
 
 //Imports
 import java.sql.*;

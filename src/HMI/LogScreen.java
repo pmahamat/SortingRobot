@@ -1,4 +1,4 @@
-package Test;
+package HMI;
 
 import javax.swing.*;
 import java.awt.*;

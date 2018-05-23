@@ -1,4 +1,4 @@
-package Test;
+package HMI;
 
 //Log class for logging events to the database
 public class Logger {

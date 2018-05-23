@@ -1,4 +1,4 @@
-package Test;
+package HMI;
 
 public class Robot {
     private String naam;

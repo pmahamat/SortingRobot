@@ -1,4 +1,7 @@
-import Test.*;
+import HMI.MainController;
+import HMI.SamenstelRobot;
+import HMI.SorteerRobot;
+import HMI.Systeem;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,7 +23,7 @@ public class Main extends Application {
         Systeem systeem = new Systeem(sorteerRobot, samenstelRobot);
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Test/HMI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HMI/HMI.fxml"));
         Parent root = loader.load();
         MainController controller = loader.getController();
         controller.setSysteem(systeem);

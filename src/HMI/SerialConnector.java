@@ -1,4 +1,4 @@
-package Test;
+package HMI;
 
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;
