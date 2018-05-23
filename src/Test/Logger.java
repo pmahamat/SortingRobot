@@ -1,5 +1,6 @@
 package Test;
 
+//Log class for logging events to the database
 public class Logger {
     private static Database database = new Database();
 

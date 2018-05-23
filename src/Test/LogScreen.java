@@ -1,10 +1,10 @@
 package Test;
 
-import javafx.scene.control.Alert;
-
 import javax.swing.*;
 import java.awt.*;
 
+
+//Screen for showing the logs
 public class LogScreen extends JDialog {
     private JTextArea logTekst;
 
