@@ -1,10 +1,13 @@
 package Test;
 
+//Imports
 import java.sql.*;
 import java.util.ArrayList;
 
+//Database class
 public class Database {
 
+    //vars for prepare statements
     private PreparedStatement update = null;
     private PreparedStatement delete = null;
     private PreparedStatement insert = null;
@@ -13,6 +16,8 @@ public class Database {
 
     }
 
+
+    //Update database
     public void update(String table, String column1, String column2, String index1, String index2) {
         try (
                 // Step 1: Allocate a database 'Connection' object
@@ -33,6 +38,7 @@ public class Database {
         }
     }
 
+    //Delete from database
     public void delete(String table, String column1, String index1) {
         try (
                 // Step 1: Allocate a database 'Connection' object
@@ -52,6 +58,7 @@ public class Database {
         }
     }
 
+    //Insert into database
     public void insertComponent(String index1) {
         try (
                 // Step 1: Allocate a database 'Connection' object
@@ -71,6 +78,8 @@ public class Database {
         }
     }
 
+
+    //Write log to database
     public void insertLog(String bericht, int componentID) {
         try (
                 // Step 1: Allocate a database 'Connection' object
@@ -91,6 +100,7 @@ public class Database {
         }
     }
 
+    //Inserting robot to database
     public void insertRobot(int Bak1, int Bak2, int Bak3, int Bak4) {
         try (
                 // Step 1: Allocate a database 'Connection' object
@@ -122,7 +132,7 @@ public class Database {
         }
     }
 
-
+    //Save combination to database
     public void insertSamenstelling(String naam, int Bak1, int Bak2, int Bak3, int Bak4, String Kleur1, String Kleur2, String Kleur3, String Kleur4) {
         try (
                 // Step 1: Allocate a database 'Connection' object
@@ -158,6 +168,7 @@ public class Database {
         }
     }
 
+    //Getting combination from database
     public ArrayList<Integer> SelectSamenstelling(String naam) {
         try (
                 // Step 1: Allocate a database 'Connection' object
@@ -185,6 +196,7 @@ public class Database {
         return null;
     }
 
+    //Getting colour combination from database
     public ArrayList<String> SelectSamenstellingKleuren(String naam) {
         try (
                 // Step 1: Allocate a database 'Connection' object
@@ -212,6 +224,7 @@ public class Database {
         return null;
     }
 
+    //Get combination name
     public ArrayList<String> SelectNaamSamenstelling() {
         try (
                 // Step 1: Allocate a database 'Connection' object
@@ -233,6 +246,7 @@ public class Database {
         }
     }
 
+    //Getting logs
     public static String selectLog() {
         try (
                 // Step 1: Allocate a database 'Connection' object
