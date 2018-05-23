@@ -3,18 +3,15 @@ package Test;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;
 import com.fazecast.jSerialComm.SerialPortEvent;
-import com.mysql.cj.xdevapi.JsonString;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import javafx.scene.paint.*;
-
-import java.awt.*;
 
 public class SerialConnector {
+
+    //Defining vars
     String test = "";
     String Stringaf = "";
     private static SerialPort[] serialPorts = SerialPort.getCommPorts();
@@ -23,7 +20,10 @@ public class SerialConnector {
     MainController controller;
 
     SerialConnector(int port, MainController controller) {
+
+        //Try catch for when arduino is not connected
         try {
+            //Setting up serial connection
             this.controller = controller;
             arduino = serialPorts[port - 1];
 
@@ -32,6 +32,7 @@ public class SerialConnector {
 
             arduino.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 100, 0);
 
+            //Adding serial listener to do things when it receives a package
             arduino.addDataListener(new SerialPortDataListener() {
                 @Override
                 public int getListeningEvents() {
@@ -170,6 +171,8 @@ public class SerialConnector {
 
     }
 
+
+    //Class for writing strings to the serial device
     public void SendMessage(String s) {
         try {
             byte[] buffer = s.getBytes();
