@@ -22,11 +22,30 @@ public class MainController {
     private Database database = new Database();
     private Logger log = new Logger();
 
+    Thread one;
+
     public void setSysteem(Systeem systeem) {
         this.systeem = systeem;
         ArrayList<String> alpha = database.SelectNaamSamenstelling();
         Collections.sort(alpha);
         samenstellingen.getItems().addAll(alpha);
+
+        one = new Thread(() -> {
+            try {
+                while (true) {
+                    if (serialConnector1.arduino.isOpen()) {
+                        System.out.println("Works");
+                        log.LogRobot(aantalKleur1.getValue(), aantalKleur2.getValue(), aantalKleur3.getValue(), aantalKleur4.getValue());
+                    }
+
+                    Thread.sleep(60000);
+                }
+            } catch (InterruptedException v) {
+                System.out.println(v);
+            }
+        });
+
+        one.start();
     }
 
     private SerialConnector serialConnector1 = new SerialConnector(1, this);
