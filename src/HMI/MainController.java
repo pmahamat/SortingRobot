@@ -228,6 +228,15 @@ public class MainController {
         setColor(4, circleStatusBakje4);
     }
 
+    @FXML
+    void setStatusRobot1(){
+        if (systeem.getSamenstelRobot().getOn()) {
+            statusRobot2.setFill(Color.GREEN);
+        } else {
+            statusRobot2.setFill(Color.RED);
+        }
+    }
+
     //switch de status van robot 2
     @FXML
     public void startRobot2(javafx.event.ActionEvent actionEvent) {
@@ -238,7 +247,7 @@ public class MainController {
             statusRobot2.setFill(Color.RED);
         }
         JSONObject obj = new JSONObject();
-        obj.put("type", "SwitchPower1");
+        obj.put("type", "SwitchPower2");
         serialConnector1.SendMessage(obj.toJSONString());
     }
 
@@ -339,12 +348,19 @@ public class MainController {
         } else if(check.size() < 4){
             JOptionPane.showMessageDialog(null, "Een kleur mag maar een keer voorkomen");
         } else {
-            serialConnector2.SendMessage(
-                    "{\"type\":\"SorteerRobot\"," +
-                            "\"kleur1\":\"" + kleur1.getValue() + "\"," +
-                            "\"kleur2\":\"" + kleur2.getValue() + "\"," +
-                            "\"kleur3\":\"" + kleur3.getValue() + "\"," +
-                            "\"kleur4\":\"" + kleur4.getValue() + "\"}");
+//            serialConnector2.SendMessage(
+//                    "{\"type\":\"SorteerRobot\"," +
+//                            "\"kleur1\":\"" + kleur1.getValue() + "\"," +
+//                            "\"kleur2\":\"" + kleur2.getValue() + "\"," +
+//                            "\"kleur3\":\"" + kleur3.getValue() + "\"," +
+//                            "\"kleur4\":\"" + kleur4.getValue() + "\"}");
+            JSONObject obj = new JSONObject();
+            obj.put("kleur1", kleur1.getValue());
+            obj.put("kleur2", kleur2.getValue());
+            obj.put("kleur3", kleur3.getValue());
+            obj.put("kleur4", kleur4.getValue());
+            serialConnector1.SendMessage(obj.toJSONString());
+
             Logger.Log("Kleuren verzonden: " + kleur1.getValue() + ", " + kleur2.getValue() + ", "
                     + kleur3.getValue() + ", " + kleur4.getValue(), 3);
             JOptionPane.showMessageDialog(null, "Kleuren verzonden.");
@@ -357,13 +373,21 @@ public class MainController {
         if (systeem.getSamenstelRobot().getOn() == true) {
             JOptionPane.showMessageDialog(null, "De robot moet uit zijn om te kunnen verzenden.");
         } else {
-            serialConnector2.SendMessage(
-                    "{\"type\":\"samenstelling\"," +
-                            "\"kleur1\":\"" + aantalKleur1.getValue() + "\"," +
-                            "\"kleur2\":\"" + aantalKleur2.getValue() + "\"," +
-                            "\"kleur3\":\"" + aantalKleur3.getValue() + "\"," +
-                            "\"kleur4\":\"" + aantalKleur4.getValue() + "\"," +
-                            "\"batches\":\"" + aantalBatches.getValue() + "\"}");
+//            serialConnector1.SendMessage(
+//                    "{\"type\":\"samenstelling\"," +
+//                            "\"kleur1\":\"" + aantalKleur1.getValue() + "\"," +
+//                            "\"kleur2\":\"" + aantalKleur2.getValue() + "\"," +
+//                            "\"kleur3\":\"" + aantalKleur3.getValue() + "\"," +
+//                            "\"kleur4\":\"" + aantalKleur4.getValue() + "\"," +
+//                            "\"batches\":\"" + aantalBatches.getValue() + "\"}");
+            JSONObject obj = new JSONObject();
+            obj.put("kleur1", aantalKleur1.getValue());
+            obj.put("kleur2", aantalKleur2.getValue());
+            obj.put("kleur3", aantalKleur3.getValue());
+            obj.put("kleur4", aantalKleur4.getValue());
+            obj.put("activator", 1);
+            obj.put("batches", aantalBatches.getValue());
+            serialConnector1.SendMessage(obj.toJSONString());
             Logger.Log("Aantallen verzonden: " + aantalKleur1.getValue() + "->kleur1, " + aantalKleur2.getValue() + "->kleur2, "
                     + aantalKleur3.getValue() + "->kleur3, " + aantalKleur4.getValue() + "->kleur4, " + aantalBatches.getValue() + "->batches", 3);
         }

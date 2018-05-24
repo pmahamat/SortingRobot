@@ -56,7 +56,6 @@ public class SerialConnector {
                         int n = json.indexOf("\n");
                         test += json.substring(0, n);
                         test.replace("\n", "");
-//                        System.out.println(test);
                         Stringaf = test;
                         test = "";
                         done = true;
@@ -192,7 +191,7 @@ public class SerialConnector {
             byte[] buffer = s.getBytes();
             arduino.writeBytes(buffer, buffer.length);
         } catch (Exception e) {
-            System.out.println("Arduino not connected make sure to connect it first.");
+            System.out.println(e);
         }
     }
 }
