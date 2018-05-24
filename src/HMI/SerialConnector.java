@@ -15,7 +15,7 @@ public class SerialConnector {
     String test = "";
     String Stringaf = "";
     private static SerialPort[] serialPorts = SerialPort.getCommPorts();
-    private SerialPort arduino;
+    public SerialPort arduino;
     boolean done = false;
     MainController controller;
 
