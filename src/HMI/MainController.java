@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 
-import static HMI.SorteerRobot.setKleur1;
+// import static HMI.SorteerRobot.setKleur1;
 
 public class MainController {
 
@@ -298,7 +298,6 @@ public class MainController {
         kleuren.add(kleur3);
         kleuren.add(kleur4);
         HashSet<String> set = new HashSet<>();
-//
         ArrayList<String> check = new ArrayList<>();
         for (ComboBox kleur : kleuren) {
             if (kleur.getValue() == null) {
@@ -406,32 +405,6 @@ public class MainController {
 
     public void setScannedObjectsCounter(Long counter) {
         this.scannedObjectsCounter.setText(Long.toString(counter));
-    }
-
-    public void setStatusRobot2Bakje1(Label statusRobot2Bakje1) {
-
-        this.statusRobot2Bakje1 = statusRobot2Bakje1;
-
-    }
-
-    public void setStatusRobot2Bakje2(Label statusRobot2Bakje2) {
-
-        this.statusRobot2Bakje2 = statusRobot2Bakje2;
-    }
-
-    public void setStatusRobot2Bakje3(Label statusRobot2Bakje3) {
-
-        this.statusRobot2Bakje3 = statusRobot2Bakje3;
-    }
-
-    public void setStatusRobot2Bakje4(Label statusRobot2Bakje4) {
-
-        this.statusRobot2Bakje4 = statusRobot2Bakje4;
-
-    }
-
-    public void setStatusRobot2Batch(Label statusRobot2Batch) {
-        this.statusRobot2Batch = statusRobot2Batch;
     }
 
     private void clearBakjes() {
