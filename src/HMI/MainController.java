@@ -164,31 +164,7 @@ public class MainController {
     @FXML
     private ChoiceBox samenstellingen;
 
-    @FXML
-    void setAantal1(javafx.scene.input.InputMethodEvent event) {
-
-    }
-
-    @FXML
-    void setAantal2(InputMethodEvent event) {
-        System.out.println("hoi");
-    }
-
-    @FXML
-    void setAantal3(InputMethodEvent event) {
-
-    }
-
-    @FXML
-    void setAantal4(InputMethodEvent event) {
-
-    }
-
-    @FXML
-    void setAantalBatches(InputMethodEvent event) {
-
-    }
-
+    // zet de kleur van de bakjes in de HMI naar de juiste kleur
     public void setColor(int i, Circle circle) {
         String kleur = null;
         switch (i) {
@@ -228,35 +204,31 @@ public class MainController {
         }
     }
 
+    //als kleur 1 veranderd roep de Functie setColor aan
     @FXML
     void setColor1(ActionEvent event) {
         setColor(1, cirlceStatusBakje1);
     }
 
+    //als kleur 2 veranderd roep de Functie setColor aan
     @FXML
     void setColor2(ActionEvent event) {
         setColor(2, circleStatusBakje2);
     }
 
+    //als kleur 3 veranderd roep de Functie setColor aan
     @FXML
     void setColor3(ActionEvent event) {
         setColor(3, circleStatusBakje3);
     }
 
+    //als kleur 4 veranderd roep de Functie setColor aan
     @FXML
     void setColor4(ActionEvent event) {
         setColor(4, circleStatusBakje4);
     }
 
-    public void setStatusRobot1() {
-        if (systeem.getSorteerRobot().getOn()) {
-            statusRobot1.setFill(Color.GREEN);
-        } else {
-            statusRobot1.setFill(Color.RED);
-        }
-    }
-
-
+    //switch de status van robot 2
     @FXML
     public void startRobot2(javafx.event.ActionEvent actionEvent) {
         systeem.getSamenstelRobot().switchPower();
@@ -270,6 +242,7 @@ public class MainController {
         serialConnector1.SendMessage(obj.toJSONString());
     }
 
+    //switch de status van robot 1
     @FXML
     public void startRobot1() {
         systeem.getSorteerRobot().switchPower();
@@ -283,6 +256,7 @@ public class MainController {
         serialConnector1.SendMessage(obj.toJSONString());
     }
 
+    //sla de samenstelling op in de database
     @FXML
     public void slaOp() {
         boolean Naambestaad = false;
@@ -306,6 +280,7 @@ public class MainController {
         }
     }
 
+    // haal de samenstelling op in de database
     @FXML
     public void getSamenstellingen() {
         ArrayList<Integer> waardeBakken;
@@ -322,13 +297,15 @@ public class MainController {
         kleur4.setValue(kleuren.get(3));
     }
 
-
+    //open een nieuw scherm waar de log wordt getoont
     @FXML
     public void openLog1() {
         LogScreen logscreen1 = new LogScreen();
 
     }
 
+    //verzend de kleuren voor de bakken naar robot 1
+    //(met een paar checks zodat er geen dubbele of lege code wordt gestuurdt)
     @FXML
     public void verzend1() {
         boolean hasValues = true;
@@ -374,6 +351,7 @@ public class MainController {
         }
     }
 
+    //verzend de aantalen die robot 2 uit de machine moet halen
     @FXML
     public void verzend2() {
         if (systeem.getSamenstelRobot().getOn() == true) {
@@ -391,63 +369,52 @@ public class MainController {
         }
     }
 
+    //veranderd de box LastScannedColor
     public void setLastScannedColor(Color kleur) {
         lastScannedColor.setFill(kleur);
     }
 
-    public void setCirlceStatusBakjez1(Circle cirlceStatusBakje1) {
-        this.cirlceStatusBakje1 = cirlceStatusBakje1;
-    }
-
-    public void setCircleStatusBakje2(Circle circleStatusBakje2) {
-        this.circleStatusBakje2 = circleStatusBakje2;
-    }
-
-    public void setCircleStatusBakje3(Circle circleStatusBakje3) {
-        this.circleStatusBakje3 = circleStatusBakje3;
-    }
-
+    //een mothode zodat we het systeem door kunnen geven
     public Systeem getSysteem() {
         return systeem;
     }
 
-    public void setCircleStatusBakje4(Circle circleStatusBakje4) {
-        this.circleStatusBakje4 = circleStatusBakje4;
-    }
-
-    public void setCircleStatusBakje5(Circle circleStatusBakje5) {
-        this.circleStatusBakje5 = circleStatusBakje5;
-    }
-
+    //zorgt voor visuele weergave van de snoepjes glijbaan
     public void setTextStatusBakje1(String textStatusBakje1) {
         clearBakjes();
         this.textStatusBakje1.setText(textStatusBakje1);
     }
 
+    //zorgt voor visuele weergave van de snoepjes glijbaan
     public void setTextStatusBakje2(String textStatusBakje2) {
         clearBakjes();
         this.textStatusBakje2.setText(textStatusBakje2);
     }
 
+    //zorgt voor visuele weergave van de snoepjes glijbaan
     public void setTextStatusBakje3(String textStatusBakje3) {
         clearBakjes();
         this.textStatusBakje3.setText(textStatusBakje3);
     }
 
+    //zorgt voor visuele weergave van de snoepjes glijbaan
     public void setTextStatusBakje4(String textStatusBakje4) {
         clearBakjes();
         this.textStatusBakje4.setText(textStatusBakje4);
     }
 
+    //zorgt voor visuele weergave van de snoepjes glijbaan
     public void setTextStatusBakje5(String textStatusBakje5) {
         clearBakjes();
         this.textStatusBakje5.setText(textStatusBakje5);
     }
 
+    //verandert de counter
     public void setScannedObjectsCounter(Long counter) {
         this.scannedObjectsCounter.setText(Long.toString(counter));
     }
 
+    //zorgt voor visuele weergave van de snoepjes glijbaan wordt gereset
     private void clearBakjes() {
         textStatusBakje1.setText("-");
         textStatusBakje2.setText("-");
