@@ -298,11 +298,7 @@ public class MainController {
         kleuren.add(kleur3);
         kleuren.add(kleur4);
         HashSet<String> set = new HashSet<>();
-        ArrayList<String> kleurenString = new ArrayList<>();
-        kleurenString.add(kleur1.getValue().toString());
-        kleurenString.add(kleur2.getValue().toString());
-        kleurenString.add(kleur3.getValue().toString());
-        kleurenString.add(kleur4.getValue().toString());
+//
         ArrayList<String> check = new ArrayList<>();
         for (ComboBox kleur : kleuren) {
             if (kleur.getValue() == null) {
@@ -310,13 +306,15 @@ public class MainController {
                 break;
             }
         }
-        for(String string: kleurenString){
-            if (!set.contains(string)) {
-                check.add(string);
-                set.add(string);
+        if(hasValues){
+            for(ComboBox box: kleuren){
+                String string = box.getValue().toString();
+                if (!set.contains(string)) {
+                    check.add(string);
+                    set.add(string);
+                }
             }
         }
-
         if (systeem.getSorteerRobot().getOn() == true) {
             JOptionPane.showMessageDialog(null, "De robot moet uit zijn om te kunnen verzenden.");
         } else if (!hasValues) {
