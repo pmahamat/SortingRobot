@@ -35,7 +35,7 @@ public class MainController {
                 while (true) {
                     if (serialConnector1.arduino.isOpen()) {
                         System.out.println("Works");
-                        log.LogRobot(aantalKleur1.getValue(), aantalKleur2.getValue(), aantalKleur3.getValue(), aantalKleur4.getValue());
+                        log.LogRobot(Integer.parseInt(totaal1.getText()), Integer.parseInt(totaal2.getText()), Integer.parseInt(totaal3.getText()), Integer.parseInt(totaal4.getText()));
                     }
 
                     Thread.sleep(60000);
@@ -54,19 +54,19 @@ public class MainController {
     private Systeem systeem;
 
     @FXML
-    private Text totaal1;
+    public Text totaal1;
 
     @FXML
-    private Text totaal2;
+    public Text totaal2;
 
     @FXML
-    private Text totaal3;
+    public Text totaal3;
 
     @FXML
-    private Text totaal4;
+    public Text totaal4;
 
     @FXML
-    private Text totaal5;
+    public Text totaal5;
 
     @FXML
     private Rectangle lastScannedColor;

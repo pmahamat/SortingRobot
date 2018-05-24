@@ -69,6 +69,16 @@ public class SerialConnector {
                             String type = (String) jsonObj.get("type");
 //                            int typeInt = (int) Integer.parseInt(type);
                             System.out.println(jsonObj.toJSONString());
+
+                            if(type.equals("huidig_aantal")) {
+                                System.out.println(json);
+                                controller.totaal1.setText(jsonObj.get("bak1").toString());
+                                controller.totaal2.setText(jsonObj.get("bak2").toString());
+                                controller.totaal3.setText(jsonObj.get("bak3").toString());
+                                controller.totaal4.setText(jsonObj.get("bak4").toString());
+                                controller.totaal5.setText(jsonObj.get("bak5").toString());
+                            }
+
                             if(type.equals("robot1")){
                                 //Counter
                                 Long counter = (Long) jsonObj.get("counter");
@@ -77,18 +87,25 @@ public class SerialConnector {
 
                                 //kleur
                                 String kleur = (String) jsonObj.get("kleur");
-                                if(kleur.equals("rood")){
-                                    controller.setLastScannedColor(Color.RED);
-                                }else if (kleur.equals("groen")){
-                                    controller.setLastScannedColor(Color.GREEN);
-                                }else if (kleur.equals("blauw")) {
-                                    controller.setLastScannedColor(Color.BLUE);
-                                }else if (kleur.equals("paars")){
-                                    controller.setLastScannedColor(Color.PURPLE);
-                                }else if (kleur.equals("oranje")){
-                                    controller.setLastScannedColor(Color.ORANGE);
-                                }else if (kleur.equals("geel")){
-                                    controller.setLastScannedColor(Color.YELLOW);
+                                switch (kleur) {
+                                    case "rood":
+                                        controller.setLastScannedColor(Color.RED);
+                                        break;
+                                    case "groen":
+                                        controller.setLastScannedColor(Color.GREEN);
+                                        break;
+                                    case "blauw":
+                                        controller.setLastScannedColor(Color.BLUE);
+                                        break;
+                                    case "paars":
+                                        controller.setLastScannedColor(Color.PURPLE);
+                                        break;
+                                    case "oranje":
+                                        controller.setLastScannedColor(Color.ORANGE);
+                                        break;
+                                    case "geel":
+                                        controller.setLastScannedColor(Color.YELLOW);
+                                        break;
                                 }
 
                                 //Arm
@@ -142,15 +159,12 @@ public class SerialConnector {
                                 String statusbak3 = (String) jsonObj.get("statusbak3");
                                 String statusbak4 = (String) jsonObj.get("statusbak4");
                                 String statusbatch = (String) jsonObj.get("statusbatch");
-                                Platform.runLater(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        controller.statusRobot2Bakje1.setText(statusbak1);
-                                        controller.statusRobot2Bakje2.setText(statusbak2);
-                                        controller.statusRobot2Bakje3.setText(statusbak3);
-                                        controller.statusRobot2Bakje4.setText(statusbak4);
-                                        controller.statusRobot2Batch.setText(statusbatch);
-                                    }
+                                Platform.runLater(() -> {
+                                    controller.statusRobot2Bakje1.setText(statusbak1);
+                                    controller.statusRobot2Bakje2.setText(statusbak2);
+                                    controller.statusRobot2Bakje3.setText(statusbak3);
+                                    controller.statusRobot2Bakje4.setText(statusbak4);
+                                    controller.statusRobot2Batch.setText(statusbatch);
                                 });
 
                             }
