@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import org.json.simple.JSONObject;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -32,6 +33,21 @@ public class MainController {
     private SerialConnector serialConnector2 = new SerialConnector(2, this);
 
     private Systeem systeem;
+
+    @FXML
+    private Text totaal1;
+
+    @FXML
+    private Text totaal2;
+
+    @FXML
+    private Text totaal3;
+
+    @FXML
+    private Text totaal4;
+
+    @FXML
+    private Text totaal5;
 
     @FXML
     private Rectangle lastScannedColor;
@@ -230,6 +246,9 @@ public class MainController {
         } else {
             statusRobot2.setFill(Color.RED);
         }
+        JSONObject obj = new JSONObject();
+        obj.put("type", "SwitchPower1");
+        serialConnector1.SendMessage(obj.toJSONString());
     }
 
     @FXML
@@ -240,6 +259,9 @@ public class MainController {
         } else {
             statusRobot1.setFill(Color.RED);
         }
+        JSONObject obj = new JSONObject();
+        obj.put("type", "SwitchPower1");
+        serialConnector1.SendMessage(obj.toJSONString());
     }
 
     @FXML

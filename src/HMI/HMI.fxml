@@ -62,6 +62,11 @@
                                     <Font size="28.0" />
                                  </font>
                               </Text>
+                              <Text fx:id="totaal1" layoutX="20.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text fx:id="totaal2" layoutX="60.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text fx:id="totaal3" layoutX="101.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text fx:id="totaal4" layoutX="143.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text fx:id="totaal5" layoutX="176.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
