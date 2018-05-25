@@ -1,5 +1,6 @@
 package HMI;
 
+//Samenstelling klasse
 public class SamenstelRobot extends Robot {
 
     private int kleur1;
