@@ -228,7 +228,6 @@ public class MainController {
         setColor(4, circleStatusBakje4);
     }
 
-    @FXML
     void setStatusRobot1(){
         if (systeem.getSamenstelRobot().getOn()) {
             statusRobot2.setFill(Color.GREEN);
@@ -381,6 +380,7 @@ public class MainController {
 //                            "\"kleur4\":\"" + aantalKleur4.getValue() + "\"," +
 //                            "\"batches\":\"" + aantalBatches.getValue() + "\"}");
             JSONObject obj = new JSONObject();
+            obj.put("type", "samenstelling");
             obj.put("kleur1", aantalKleur1.getValue());
             obj.put("kleur2", aantalKleur2.getValue());
             obj.put("kleur3", aantalKleur3.getValue());

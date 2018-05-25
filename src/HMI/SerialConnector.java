@@ -71,11 +71,11 @@ public class SerialConnector {
 
                             if(type.equals("huidig_aantal")) {
                                 System.out.println(json);
-                                controller.totaal1.setText(jsonObj.get("bak1").toString());
-                                controller.totaal2.setText(jsonObj.get("bak2").toString());
-                                controller.totaal3.setText(jsonObj.get("bak3").toString());
-                                controller.totaal4.setText(jsonObj.get("bak4").toString());
-                                controller.totaal5.setText(jsonObj.get("bak5").toString());
+//                                controller.totaal1.setText(jsonObj.get("bak1").toString());
+//                                controller.totaal2.setText(jsonObj.get("bak2").toString());
+//                                controller.totaal3.setText(jsonObj.get("bak3").toString());
+//                                controller.totaal4.setText(jsonObj.get("bak4").toString());
+//                                controller.totaal5.setText(jsonObj.get("bak5").toString());
                             }
 
                             if(type.equals("robot1")){
@@ -106,6 +106,12 @@ public class SerialConnector {
                                         controller.setLastScannedColor(Color.YELLOW);
                                         break;
                                 }
+                                //Hoeveelheden
+                                controller.totaal1.setText(jsonObj.get("bakje1").toString());
+                                controller.totaal2.setText(jsonObj.get("bakje2").toString());
+                                controller.totaal3.setText(jsonObj.get("bakje3").toString());
+                                controller.totaal4.setText(jsonObj.get("bakje4").toString());
+                                controller.totaal5.setText(jsonObj.get("bakje5").toString());
 
                                 //Arm
                                 Long bakje = (Long) jsonObj.get("bakje");
