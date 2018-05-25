@@ -244,11 +244,11 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Spinner fx:id="aantalKleur1" layoutX="64.0" layoutY="43.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#setAantal1" prefHeight="26.0" prefWidth="70.0" />
-                              <Spinner fx:id="aantalKleur2" layoutX="64.0" layoutY="73.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#setAantal2" prefHeight="26.0" prefWidth="70.0" />
-                              <Spinner fx:id="aantalKleur3" layoutX="64.0" layoutY="103.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#setAantal3" prefHeight="26.0" prefWidth="70.0" />
-                              <Spinner fx:id="aantalKleur4" layoutX="64.0" layoutY="135.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#setAantal4" prefHeight="26.0" prefWidth="70.0" />
-                              <Spinner fx:id="aantalBatches" layoutX="64.0" layoutY="168.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" onInputMethodTextChanged="#setAantalBatches" prefHeight="26.0" prefWidth="70.0" />
+                              <Spinner fx:id="aantalKleur1" layoutX="64.0" layoutY="43.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="70.0" />
+                              <Spinner fx:id="aantalKleur2" layoutX="64.0" layoutY="73.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="70.0" />
+                              <Spinner fx:id="aantalKleur3" layoutX="64.0" layoutY="103.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="70.0" />
+                              <Spinner fx:id="aantalKleur4" layoutX="64.0" layoutY="135.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="70.0" />
+                              <Spinner fx:id="aantalBatches" layoutX="64.0" layoutY="168.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="70.0" />
                               <Label layoutX="13.0" layoutY="171.0" text="Batches:">
                                  <font>
                                     <Font size="14.0" />
