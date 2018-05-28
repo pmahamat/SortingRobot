@@ -3,7 +3,6 @@ package HMI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -22,7 +21,7 @@ public class MainController {
     private Database database = new Database();
     private Logger log = new Logger();
 
-    Thread one;
+    private static Thread threadOne;
 
     public void setSysteem(Systeem systeem) {
         this.systeem = systeem;
@@ -30,11 +29,10 @@ public class MainController {
         Collections.sort(alpha);
         samenstellingen.getItems().addAll(alpha);
 
-        one = new Thread(() -> {
+        threadOne = new Thread(() -> {
             try {
                 while (true) {
                     if (serialConnector1.arduino.isOpen()) {
-                        System.out.println("Works");
                         log.LogRobot(Integer.parseInt(totaal1.getText()), Integer.parseInt(totaal2.getText()), Integer.parseInt(totaal3.getText()), Integer.parseInt(totaal4.getText()));
                     }
 
@@ -45,7 +43,7 @@ public class MainController {
             }
         });
 
-        one.start();
+        threadOne.start();
     }
 
     private SerialConnector serialConnector1 = new SerialConnector(1, this);
