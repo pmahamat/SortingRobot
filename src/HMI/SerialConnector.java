@@ -84,6 +84,7 @@ public class SerialConnector {
                                 System.out.println(counter);
                                 controller.setScannedObjectsCounter(counter);
 
+
                                 //kleur
                                 String kleur = (String) jsonObj.get("kleur");
                                 switch (kleur) {
@@ -106,32 +107,50 @@ public class SerialConnector {
                                         controller.setLastScannedColor(Color.YELLOW);
                                         break;
                                 }
-                                //Hoeveelheden
-                                controller.totaal1.setText(jsonObj.get("bakje1").toString());
-                                controller.totaal2.setText(jsonObj.get("bakje2").toString());
-                                controller.totaal3.setText(jsonObj.get("bakje3").toString());
-                                controller.totaal4.setText(jsonObj.get("bakje4").toString());
-                                controller.totaal5.setText(jsonObj.get("bakje5").toString());
+
 
                                 //Arm
+                                JSONObject update = new JSONObject();
                                 Long bakje = (Long) jsonObj.get("bakje");
                                 switch (bakje.intValue()) {
                                     case 1:
                                         controller.setTextStatusBakje1("*");
+                                        controller.getSysteem().getSorteerRobot().setBakje1();
+                                        update.put("type", "addBakje1");
+                                        controller.getSerialConnector2().SendMessage(update.toJSONString());
                                         break;
                                     case 2:
                                         controller.setTextStatusBakje2("*");
+                                        controller.getSysteem().getSorteerRobot().setBakje2();
+                                        update.put("type", "addBakje2");
+                                        controller.getSerialConnector2().SendMessage(update.toJSONString());
                                         break;
                                     case 3:
                                         controller.setTextStatusBakje3("*");
+                                        controller.getSysteem().getSorteerRobot().setBakje3();
+                                        update.put("type", "addBakje3");
+                                        controller.getSerialConnector2().SendMessage(update.toJSONString());
                                         break;
                                     case 4:
                                         controller.setTextStatusBakje4("*");
+                                        controller.getSysteem().getSorteerRobot().setBakje4();
+                                        update.put("type", "addBakje4");
+                                        controller.getSerialConnector2().SendMessage(update.toJSONString());
                                         break;
                                     case 5:
                                         controller.setTextStatusBakje5("*");
+                                        controller.getSysteem().getSorteerRobot().setBakje5();
+                                        update.put("type", "addBakje5");
+                                        controller.getSerialConnector2().SendMessage(update.toJSONString());
                                         break;
                                 }
+
+                                //update UI
+                                controller.totaal1.setText(Integer.toString(controller.getSysteem().getSorteerRobot().getBakje1()));
+                                controller.totaal2.setText(Integer.toString(controller.getSysteem().getSorteerRobot().getBakje2()));
+                                controller.totaal3.setText(Integer.toString(controller.getSysteem().getSorteerRobot().getBakje3()));
+                                controller.totaal4.setText(Integer.toString(controller.getSysteem().getSorteerRobot().getBakje4()));
+                                controller.totaal5.setText(Integer.toString(controller.getSysteem().getSorteerRobot().getBakje5()));
                             }else if(type.equals("statusRobot1")){
                                 String status = (String) jsonObj.get("status");
                                 if(status.equals("1")){
@@ -159,18 +178,19 @@ public class SerialConnector {
                                     controller.getSysteem().getSamenstelRobot().setOn(false);
                                 }
                             } else if (type.equals("Robot2")) {
-                                String statusbak1 = (String) jsonObj.get("statusbak1");
-                                String statusbak2 = (String) jsonObj.get("statusbak2");
-                                String statusbak3 = (String) jsonObj.get("statusbak3");
-                                String statusbak4 = (String) jsonObj.get("statusbak4");
-                                String statusbatch = (String) jsonObj.get("statusbatch");
-                                Platform.runLater(() -> {
-                                    controller.statusRobot2Bakje1.setText(statusbak1);
-                                    controller.statusRobot2Bakje2.setText(statusbak2);
-                                    controller.statusRobot2Bakje3.setText(statusbak3);
-                                    controller.statusRobot2Bakje4.setText(statusbak4);
-                                    controller.statusRobot2Batch.setText(statusbatch);
-                                });
+                                System.out.println(jsonObj);
+                                Long statusbak1 = (Long) jsonObj.get("statusbak1");
+//                                int statusbak2 = (int) jsonObj.get("statusbak2");
+//                                int statusbak3 = (int) jsonObj.get("statusbak3");
+//                                int statusbak4 = (int) jsonObj.get("statusbak4");
+//                                int statusbatch = (int) jsonObj.get("statusbatch");
+//                                Platform.runLater(() -> {
+                                    controller.statusRobot2Bakje1.setText(statusbak1.toString());
+//                                    controller.statusRobot2Bakje2.setText(statusbak2);
+//                                    controller.statusRobot2Bakje3.setText(statusbak3);
+//                                    controller.statusRobot2Bakje4.setText(statusbak4);
+//                                    controller.statusRobot2Batch.setText(statusbatch);
+//                                });
 
                             }
                         } catch (ParseException e) {

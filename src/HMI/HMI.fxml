@@ -44,7 +44,7 @@
                               <Circle fx:id="circleStatusBakje2" fill="#fff" layoutX="71.0" layoutY="142.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
                               <Circle fx:id="circleStatusBakje3" fill="#fff" layoutX="112.0" layoutY="158.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
                               <Circle fx:id="circleStatusBakje4" fill="#fff" layoutX="154.0" layoutY="141.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Circle fx:id="circleStatusBakje5" fill="#ff2121" layoutX="187.0" layoutY="114.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="171.6" AnchorPane.rightAnchor="92.39999999999998" />
+                              <Circle fx:id="circleStatusBakje5" fill="#979090" layoutX="187.0" layoutY="114.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="171.6" AnchorPane.rightAnchor="92.39999999999998" />
                               <Circle fill="DODGERBLUE" layoutX="114.0" layoutY="81.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="83.19999999999999" AnchorPane.leftAnchor="82.6" AnchorPane.rightAnchor="149.39999999999998" AnchorPane.topAnchor="50.0" />
                               <Text fx:id="textStatusBakje1" layoutX="20.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="41.999995708465576" />
                               <Text fx:id="textStatusBakje2" layoutX="52.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="37.201184034347534" />
@@ -164,10 +164,10 @@
                                     <Font name="Verdana" size="18.0" />
                                  </font>
                               </Label>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5e5e5" height="62.0" layoutX="53.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="42.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="199.39999999999998" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5e5e5" height="62.0" layoutX="101.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="42.0" AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="151.39999999999998" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5e5e5" height="62.0" layoutX="150.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="42.0" AnchorPane.leftAnchor="150.0" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5e5e5" height="62.0" layoutX="199.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="42.0" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="53.39999999999998" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5e5e5" height="138.0" layoutX="53.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="42.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="199.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5e5e5" height="138.0" layoutX="101.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="42.0" AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="151.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5e5e5" height="138.0" layoutX="150.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="42.0" AnchorPane.leftAnchor="150.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5e5e5" height="138.0" layoutX="199.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="42.0" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="53.0" />
                               <Text layoutX="52.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bakje1:" wrappingWidth="42.40000247955322" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="199.99999752044675">
                                  <font>
                                     <Font size="11.0" />
@@ -184,28 +184,22 @@
                                  <font>
                                     <Font size="11.0" />
                                  </font></Text>
-                              <Label fx:id="statusRobot2Bakje1" layoutX="64.0" layoutY="64.0" text="1/5">
+                              <Label fx:id="statusRobot2Bakje1" layoutX="63.0" layoutY="110.0" text="1/5">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="statusRobot2Bakje2" layoutX="111.0" layoutY="64.0" text="1/5">
+                              <Label fx:id="statusRobot2Bakje2" layoutX="112.0" layoutY="110.0" text="1/5">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="statusRobot2Bakje3" layoutX="161.0" layoutY="64.0" text="1/5">
+                              <Label fx:id="statusRobot2Bakje3" layoutX="161.0" layoutY="110.0" text="1/5">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="statusRobot2Bakje4" layoutX="210.0" layoutY="64.0" text="1/5">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5e5e5" height="62.0" layoutX="52.0" layoutY="111.0" stroke="BLACK" strokeType="INSIDE" width="191.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="199.39999999999998" />
-                              <Label fx:id="statusRobot2Batch" layoutX="116.0" layoutY="132.0" text="Batch: 1/5">
+                              <Label fx:id="statusRobot2Bakje4" layoutX="209.0" layoutY="110.0" text="1/5">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -248,12 +242,6 @@
                               <Spinner fx:id="aantalKleur2" layoutX="64.0" layoutY="73.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="70.0" />
                               <Spinner fx:id="aantalKleur3" layoutX="64.0" layoutY="103.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="70.0" />
                               <Spinner fx:id="aantalKleur4" layoutX="64.0" layoutY="135.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="70.0" />
-                              <Spinner fx:id="aantalBatches" layoutX="64.0" layoutY="168.0" max="100" maxHeight="-Infinity" maxWidth="-Infinity" min="0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="70.0" />
-                              <Label layoutX="13.0" layoutY="171.0" text="Batches:">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
                               <Button fx:id="startStop2" layoutX="179.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startRobot2" text="Start/Stop" AnchorPane.rightAnchor="44.99999999999997" />
                               <Circle fx:id="statusRobot2" fill="#ff1f20" layoutX="269.0" layoutY="37.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="7.0" />
                               <Button fx:id="opslaanButton" layoutX="165.0" layoutY="135.0" mnemonicParsing="false" onAction="#slaOp" text="Opslaan" AnchorPane.rightAnchor="70.19999999999999" />

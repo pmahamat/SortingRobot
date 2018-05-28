@@ -11,10 +11,55 @@ public class SorteerRobot extends HMI.Robot {
     private static Color kleur2 = Color.blue;
     private static Color kleur3 = Color.blue;
     private static Color kleur4 = Color.blue;
+    private int bakje1;
+    private int bakje2;
+    private int bakje3;
+    private int bakje4;
+    private int bakje5;
     private static Color lastScannedColor;
 
     public int getStandArm() {
         return standArm;
+    }
+
+    public int getBakje1() {
+        return bakje1;
+    }
+
+    public void setBakje1() {
+        this.bakje1++;
+    }
+
+    public int getBakje2() {
+        return bakje2;
+    }
+
+    public void setBakje2() {
+        this.bakje2++;
+    }
+
+    public int getBakje3() {
+        return bakje3;
+    }
+
+    public void setBakje3() {
+        this.bakje3++;
+    }
+
+    public int getBakje4() {
+        return bakje4;
+    }
+
+    public void setBakje4() {
+        this.bakje4++;
+    }
+
+    public int getBakje5() {
+        return bakje5;
+    }
+
+    public void setBakje5() {
+        this.bakje5++;
     }
 
     public static Color getKleur1() {

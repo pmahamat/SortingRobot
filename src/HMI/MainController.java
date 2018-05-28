@@ -49,6 +49,15 @@ public class MainController {
     }
 
     private SerialConnector serialConnector1 = new SerialConnector(1, this);
+
+    public SerialConnector getSerialConnector1() {
+        return serialConnector1;
+    }
+
+    public SerialConnector getSerialConnector2() {
+        return serialConnector2;
+    }
+
     private SerialConnector serialConnector2 = new SerialConnector(2, this);
 
     private Systeem systeem;
@@ -247,7 +256,7 @@ public class MainController {
         }
         JSONObject obj = new JSONObject();
         obj.put("type", "SwitchPower2");
-        serialConnector1.SendMessage(obj.toJSONString());
+        serialConnector2.SendMessage(obj.toJSONString());
     }
 
     //switch de status van robot 1
@@ -387,7 +396,7 @@ public class MainController {
             obj.put("kleur4", aantalKleur4.getValue());
             obj.put("activator", 1);
             obj.put("batches", aantalBatches.getValue());
-            serialConnector1.SendMessage(obj.toJSONString());
+            serialConnector2.SendMessage(obj.toJSONString());
             Logger.Log("Aantallen verzonden: " + aantalKleur1.getValue() + "->kleur1, " + aantalKleur2.getValue() + "->kleur2, "
                     + aantalKleur3.getValue() + "->kleur3, " + aantalKleur4.getValue() + "->kleur4, " + aantalBatches.getValue() + "->batches", 3);
         }
